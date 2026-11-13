@@ -1,9 +1,9 @@
 {
-  "updated": "2026-11-13T17:47:28.319Z",
+  "updated": "2026-11-13T18:16:22.269Z",
   "modules": [
     {
-      "name_th": "VOR",
-      "name_en": "VOR",
+      "name_th": "VOR (GCIP/BI)",
+      "name_en": "VOR (GCIP/BI)",
       "desc_th": "Pending RO · รถค้างซ่อม / รออะไหล่",
       "desc_en": "Pending RO · vehicles off road",
       "url": "https://natchanontitle-cloud.github.io/VOR-GWM/",
@@ -14,8 +14,8 @@
       ]
     },
     {
-      "name_th": "ตารางนัดหมาย",
-      "name_en": "CRM Appointment",
+      "name_th": "ตารางนัดหมาย (GCIP)",
+      "name_en": "CRM Appointment (GCIP)",
       "desc_th": "ตรวจ slot นัดหมายให้ตรงมาตรฐาน",
       "desc_en": "Check appointment slots vs. standard",
       "url": "https://natchanontitle-cloud.github.io/GWMtimeslot/",
@@ -26,8 +26,8 @@
       ]
     },
     {
-      "name_th": "CSI",
-      "name_en": "CSI",
+      "name_th": "CSI (Email/BI)",
+      "name_en": "CSI (Email/BI)",
       "desc_th": "ความพึงพอใจลูกค้า",
       "desc_en": "Customer satisfaction",
       "url": "https://natchanontitle-cloud.github.io/CSI-GWMPS/",
@@ -38,8 +38,8 @@
       ]
     },
     {
-      "name_th": "7 Days",
-      "name_en": "7 Days",
+      "name_th": "7 Days (Ding Excel)",
+      "name_en": "7 Days (Ding Excel)",
       "desc_th": "ติดตามงาน 7 วัน",
       "desc_en": "7-day follow-up",
       "url": "https://natchanontitle-cloud.github.io/7days/",
