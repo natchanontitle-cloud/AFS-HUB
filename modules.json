@@ -1,0 +1,85 @@
+{
+  "updated": "2026-11-13T17:47:25.764Z",
+  "modules": [
+    {
+      "name_th": "VOR",
+      "name_en": "VOR",
+      "desc_th": "Pending RO · รถค้างซ่อม / รออะไหล่",
+      "desc_en": "Pending RO · vehicles off road",
+      "url": "https://natchanontitle-cloud.github.io/VOR-GWM/",
+      "icon": "vor",
+      "roles": [
+        "partner",
+        "rsm"
+      ]
+    },
+    {
+      "name_th": "ตารางนัดหมาย",
+      "name_en": "CRM Appointment",
+      "desc_th": "ตรวจ slot นัดหมายให้ตรงมาตรฐาน",
+      "desc_en": "Check appointment slots vs. standard",
+      "url": "https://natchanontitle-cloud.github.io/GWMtimeslot/",
+      "icon": "crm",
+      "roles": [
+        "partner",
+        "rsm"
+      ]
+    },
+    {
+      "name_th": "CSI",
+      "name_en": "CSI",
+      "desc_th": "ความพึงพอใจลูกค้า",
+      "desc_en": "Customer satisfaction",
+      "url": "https://natchanontitle-cloud.github.io/CSI-GWMPS/",
+      "icon": "csi",
+      "roles": [
+        "partner",
+        "rsm"
+      ]
+    },
+    {
+      "name_th": "7 Days",
+      "name_en": "7 Days",
+      "desc_th": "ติดตามงาน 7 วัน",
+      "desc_en": "7-day follow-up",
+      "url": "https://natchanontitle-cloud.github.io/7days/",
+      "icon": "days",
+      "roles": [
+        "rsm"
+      ]
+    },
+    {
+      "name_th": "BG",
+      "name_en": "BG",
+      "desc_th": "เอกสาร BG",
+      "desc_en": "BG documents",
+      "url": "https://symphonious-queijadas-48c85d.netlify.app/",
+      "icon": "bg",
+      "roles": [
+        "rsm"
+      ]
+    },
+    {
+      "name_th": "Expense Claim",
+      "name_en": "Expense Claim",
+      "desc_th": "เบิกค่าใช้จ่าย",
+      "desc_en": "Expense claim",
+      "url": "https://natchanontitle-cloud.github.io/GWM-expense/",
+      "icon": "expense",
+      "roles": [
+        "rsm"
+      ]
+    },
+    {
+      "name_th": "SSOS",
+      "name_en": "SSOS",
+      "desc_th": "",
+      "desc_en": "",
+      "url": "",
+      "icon": "bg",
+      "roles": [
+        "rsm"
+      ]
+    }
+  ]
+}
