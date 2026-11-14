@@ -238,6 +238,7 @@ details.gh ol{margin:10px 0 0;padding-left:20px;color:var(--muted);font-size:13p
 .tcal i{font-style:normal;font-size:10.5px;line-height:1.3;background:var(--red-soft);color:var(--red);border-radius:5px;padding:1px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .tcal i.ok{background:#dcfce7;color:#15803d;text-decoration:line-through}
 .tcal i.more{background:none;color:var(--muted)}
+.tcal i.wk{background:#e0e7ff;color:#3730a3}
 @media (max-width:760px){
   .tcols{grid-template-columns:1fr}
   .tcal .cd{min-height:44px}
@@ -585,7 +586,7 @@ $("grid").addEventListener("click", e => {
 $("btnMan").onclick = () => { manFilter = "__all"; go("manuals"); };
 $("manBack").onclick = () => go(lastView || "home");
 
-/* ---------- งานประจำเดือน (monthly tasks) ----------
+/* ---------- งานประจำเดือน (monthly tasks) ---------- (repeat: monthly | weekly [focus = weekdays] | ongoing)
    เก็บใน tasks.json — แก้ผ่าน ⚙️ จัดการเมนู → แท็บ "งานประจำเดือน"
    repeat: "monthly" = ช่วงวันที่ของทุกเดือน (from–to; 30/31 เลื่อนเป็นวันสุดท้ายของเดือนอัตโนมัติ)
            "ongoing" = ทำทุกวัน (focus = วันในสัปดาห์ที่เน้น 0=อา … 6=ส)                         */
@@ -619,7 +620,7 @@ const ttl = x => (lang === "en" && x.title_en) ? x.title_en : x.title_th;
 function normTasks(list){
   return (Array.isArray(list) ? list : []).map((x, i) => ({
     id: x.id || ("t" + i + "_" + (x.short || "").replace(/\W+/g, "")),
-    role: x.role === "rsm" ? "rsm" : "ps", repeat: x.repeat === "ongoing" ? "ongoing" : "monthly",
+    role: x.role === "rsm" ? "rsm" : "ps", repeat: ["ongoing","weekly"].includes(x.repeat) ? x.repeat : "monthly",
     from: Math.min(31, Math.max(1, +x.from || 1)), to: Math.min(31, Math.max(1, +x.to || +x.from || 1)),
     focus: Array.isArray(x.focus) ? x.focus.map(Number).filter(n => n >= 0 && n <= 6) : [],
     short: String(x.short || "").trim(), title_th: String(x.title_th || "").trim(), title_en: String(x.title_en || "").trim(),
@@ -635,14 +636,15 @@ async function loadTasks(){
 const lastDayOf = (y, m) => new Date(y, m + 1, 0).getDate();
 function span(x, y, m){ const L = lastDayOf(y, m); let a = Math.min(x.from, L), b = Math.min(Math.max(x.to, x.from), L); return [a, b]; }
 const mkey = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;
-const doneKey = (x, d) => `afsDone:${mkey(d)}:${x.role}:${x.id}`;
+const dkey2 = d => `${mkey(d)}-${String(d.getDate()).padStart(2,"0")}`;
+const doneKey = (x, d) => x.repeat === "weekly" ? `afsDone:${dkey2(new Date())}:${x.role}:${x.id}` : `afsDone:${mkey(d)}:${x.role}:${x.id}`;
 const isDone = (x, d) => { try { return localStorage.getItem(doneKey(x, d)) === "1"; } catch(e){ return false; } };
 function setDone(x, d, v){ try { v ? localStorage.setItem(doneKey(x, d), "1") : localStorage.removeItem(doneKey(x, d)); } catch(e){} }
 const tasksFor = role => TASKS.filter(x => x.role === role);
 function todayTasks(role){
   const n = new Date(), y = n.getFullYear(), m = n.getMonth(), d = n.getDate(), w = n.getDay();
-  return tasksFor(role).filter(x => { if (x.repeat === "ongoing") return true; const [a,b] = span(x, y, m); return d >= a && d <= b; })
-    .map(x => ({x, focusToday: x.repeat === "ongoing" && x.focus.includes(w)}));
+  return tasksFor(role).filter(x => { if (x.repeat === "ongoing") return true; if (x.repeat === "weekly") return x.focus.includes(w); const [a,b] = span(x, y, m); return d >= a && d <= b; })
+    .map(x => ({x, focusToday: x.repeat !== "monthly" && x.focus.includes(w)}));
 }
 const rangeText = (a, b) => a === b ? `${a}` : `${a}–${b}`;
 function linkBtns(x){ return x.links.map(l => `<a class="tlink" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join(""); }
@@ -651,16 +653,20 @@ function taskRow(x, ref, opts = {}){
   let date, state = "";
   if (x.repeat === "ongoing"){
     date = `<span class="tday daily">${lang === "en" ? "Daily" : "ทุกวัน"}</span>`;
+  } else if (x.repeat === "weekly"){
+    date = `<span class="tday daily"><b style="font-size:14px">${x.focus.map(dowName).join(" ")}</b><small>${lang === "en" ? "weekly" : "ทุกสัปดาห์"}</small></span>`;
+    if (cur && x.focus.includes(now.getDay())) state = "now";
   } else {
     const [a,b] = span(x, ref.getFullYear(), ref.getMonth());
     const da = new Date(ref.getFullYear(), ref.getMonth(), a).getDay(), db = new Date(ref.getFullYear(), ref.getMonth(), b).getDay();
     date = `<span class="tday"><b>${rangeText(a,b)}</b><small>${a === b ? dowName(da) : dowName(da) + "–" + dowName(db)}</small></span>`;
     if (cur){ const d = now.getDate(); if (d >= a && d <= b) state = "now"; else if (d > b) state = "past"; }
   }
-  const done = x.repeat === "monthly" && isDone(x, ref);
+  const wToday = x.repeat === "weekly" && cur && x.focus.includes(now.getDay());
+  const done = (x.repeat === "monthly" || wToday) && isDone(x, ref);
   const focus = x.repeat === "ongoing" && x.focus.length ? `<span class="tchip">${lang === "en" ? "Focus" : "เน้น"}: ${x.focus.map(dowName).join(", ")}</span>` : "";
-  const chk = x.repeat === "monthly" ? `<label class="tchk" title="${lang === "en" ? "Done" : "ทำแล้ว"}"><input type="checkbox" data-done="${esc(x.id)}" data-role="${x.role}" ${done ? "checked" : ""}><span></span></label>` : `<span class="tchk"></span>`;
-  const badge = state === "now" && !done ? `<span class="tstate now">${lang === "en" ? "Now" : "ช่วงนี้"}</span>` : (state === "past" && !done ? `<span class="tstate late">${lang === "en" ? "Overdue" : "เลยกำหนด"}</span>` : "");
+  const chk = (x.repeat === "monthly" || wToday) ? `<label class="tchk" title="${lang === "en" ? "Done" : "ทำแล้ว"}"><input type="checkbox" data-done="${esc(x.id)}" data-role="${x.role}" ${done ? "checked" : ""}><span></span></label>` : `<span class="tchk"></span>`;
+  const badge = state === "now" && !done ? `<span class="tstate now">${x.repeat === "weekly" ? (lang === "en" ? "Today" : "วันนี้") : (lang === "en" ? "Now" : "ช่วงนี้")}</span>` : (state === "past" && !done ? `<span class="tstate late">${lang === "en" ? "Overdue" : "เลยกำหนด"}</span>` : "");
   const roleTag = opts.showRole ? `<span class="tchip ${x.role}">${x.role === "rsm" ? "RSM" : "PS"}</span>` : "";
   return `<div class="trow ${done ? "done" : ""} ${state}">${date}<div class="tmain"><div class="ttitle">${esc(ttl(x))} ${badge}</div>
     <div class="tmeta">${roleTag}${x.note ? `<span>${esc(x.note)}</span>` : ""}${x.channel ? `<span class="tchip">💬 ${esc(x.channel)}</span>` : ""}${focus}</div>
@@ -676,12 +682,12 @@ function renderTasks(){
   $("tTitle").innerHTML = `${lang === "en" ? "Monthly tasks" : "งานประจำเดือน"} <span>${taskRole === "rsm" ? "RSM" : "PS"}</span>`;
   $("tMonth").textContent = taskMonth.toLocaleDateString(lang === "en" ? "en-GB" : "th-TH", {month:"long", year:"numeric"});
   $("tManage").classList.toggle("hide", !rsmOK);
-  const list = tasksFor(taskRole), monthly = list.filter(x => x.repeat === "monthly").sort((a,b) => a.from - b.from || a.to - b.to), ongoing = list.filter(x => x.repeat === "ongoing");
+  const list = tasksFor(taskRole), monthly = list.filter(x => x.repeat === "monthly").sort((a,b) => a.from - b.from || a.to - b.to), ongoing = list.filter(x => x.repeat === "ongoing"), weekly = list.filter(x => x.repeat === "weekly").sort((a,b) => (a.focus[0] ?? 9) - (b.focus[0] ?? 9));
   // today + upcoming
   let top = "";
   if (cur){
     const d = now.getDate(), w = now.getDay();
-    const td = list.filter(x => { if (x.repeat === "ongoing") return true; const [a,b] = span(x, y, m); return d >= a && d <= b; });
+    const td = list.filter(x => { if (x.repeat === "ongoing") return true; if (x.repeat === "weekly") return x.focus.includes(w); const [a,b] = span(x, y, m); return d >= a && d <= b; });
     const up = monthly.filter(x => { const [a] = span(x, y, m); return a > d && a <= d + 7; });
     const nx = d + 7 > L ? (() => { const ny = m === 11 ? y + 1 : y, nm = (m + 1) % 12; return tasksFor(taskRole).filter(x => x.repeat === "monthly" && span(x, ny, nm)[0] <= d + 7 - L); })() : [];
     top = `<div class="tcols"><div class="tbox today"><h3>🔴 ${lang === "en" ? "Today" : "วันนี้"} · ${dowName(w)} ${d}</h3>${td.map(x => taskRow(x, taskMonth)).join("") || `<p class="tnone">${lang === "en" ? "Nothing due today" : "ไม่มีงานที่ต้องส่งวันนี้"}</p>`}</div>
@@ -692,20 +698,22 @@ function renderTasks(){
   let cal = `<div class="tcal">${[0,1,2,3,4,5,6].map(i => `<div class="th">${dowName(i)}</div>`).join("")}`;
   for (let i = 0; i < first; i++) cal += `<div class="cd empty"></div>`;
   for (let d = 1; d <= L; d++){
-    const its = monthly.filter(x => { const [a,b] = span(x, y, m); return d >= a && d <= b; });
-    const isT = cur && d === now.getDate(), dw = new Date(y, m, d).getDay();
-    cal += `<div class="cd ${isT ? "today" : ""} ${dw === 0 ? "sun" : ""}"><span class="dn">${d}</span>${its.slice(0, 3).map(x => `<i class="${isDone(x, taskMonth) ? "ok" : ""}" title="${esc(ttl(x))}">${esc(x.short || ttl(x))}</i>`).join("")}${its.length > 3 ? `<i class="more">+${its.length - 3}</i>` : ""}</div>`;
+    const dw = new Date(y, m, d).getDay();
+    const its = [...monthly.filter(x => { const [a,b] = span(x, y, m); return d >= a && d <= b; }), ...weekly.filter(x => x.focus.includes(dw))];
+    const isT = cur && d === now.getDate();
+    cal += `<div class="cd ${isT ? "today" : ""} ${dw === 0 ? "sun" : ""}"><span class="dn">${d}</span>${its.slice(0, 3).map(x => `<i class="${x.repeat === "weekly" ? "wk" : (isDone(x, taskMonth) ? "ok" : "")}" title="${esc(ttl(x))}">${esc(x.short || ttl(x))}</i>`).join("")}${its.length > 3 ? `<i class="more">+${its.length - 3}</i>` : ""}</div>`;
   }
   cal += `</div>`;
   const doneN = monthly.filter(x => isDone(x, taskMonth)).length;
   $("tBody").innerHTML = top +
     `<div class="tsec"><div class="tsech"><h3>${lang === "en" ? "This month" : "ตลอดเดือน"} (${monthly.length})</h3><span class="tprog">${lang === "en" ? "Done" : "ทำแล้ว"} ${doneN}/${monthly.length}</span></div>${cal}<div class="tlist">${monthly.map(x => taskRow(x, taskMonth)).join("")}</div></div>` +
+    (weekly.length ? `<div class="tsec"><div class="tsech"><h3>${lang === "en" ? "Every week" : "ทุกสัปดาห์"}</h3></div><div class="tlist">${weekly.map(x => taskRow(x, taskMonth)).join("")}</div></div>` : "") +
     (ongoing.length ? `<div class="tsec"><div class="tsech"><h3>${lang === "en" ? "Every day" : "ทำเป็นประจำทุกวัน"}</h3></div><div class="tlist">${ongoing.map(x => taskRow(x, taskMonth)).join("")}</div></div>` : "") +
-    (taskRole === "rsm" ? `<div class="tsec"><div class="tsech"><h3>${lang === "en" ? "What PS must do this month" : "สิ่งที่ PS ต้องทำเดือนนี้"}</h3><button class="ghost small" data-tr="ps">${lang === "en" ? "View PS calendar" : "ดูปฏิทินของ PS"} →</button></div><div class="tlist">${tasksFor("ps").filter(x => x.repeat === "monthly").sort((a,b) => a.from - b.from).map(x => taskRow(x, taskMonth)).join("")}</div></div>` : "");
+    (taskRole === "rsm" ? `<div class="tsec"><div class="tsech"><h3>${lang === "en" ? "What PS must do this month" : "สิ่งที่ PS ต้องทำเดือนนี้"}</h3><button class="ghost small" data-tr="ps">${lang === "en" ? "View PS calendar" : "ดูปฏิทินของ PS"} →</button></div><div class="tlist">${[...tasksFor("ps").filter(x => x.repeat === "monthly").sort((a,b) => a.from - b.from), ...tasksFor("ps").filter(x => x.repeat !== "monthly")].map(x => taskRow(x, taskMonth)).join("")}</div></div>` : "");
 }
 function todayCard(role){
   const r = role === "rsm" ? "rsm" : "ps", n = new Date();
-  const its = todayTasks(r).filter(o => o.x.repeat === "monthly" || o.focusToday);
+  const its = todayTasks(r).filter(o => o.x.repeat !== "ongoing" || o.focusToday);
   const up = tasksFor(r).filter(x => x.repeat === "monthly" && (() => { const [a] = span(x, n.getFullYear(), n.getMonth()); return a > n.getDate() && a <= n.getDate() + 3; })());
   const line = o => `<li>${esc(ttl(o.x || o))}${o.focusToday ? ` <span class="tstate now">${lang === "en" ? "today" : "วันนี้"}</span>` : ""}</li>`;
   return `<div class="tcard"><div class="tcard-h"><b>📅 ${lang === "en" ? "Today's tasks" : "งานของวันนี้"}</b><button class="ghost small" id="openTasks">${lang === "en" ? "Monthly calendar" : "ดูงานทั้งเดือน"} →</button></div>
@@ -728,7 +736,7 @@ function buildICS(role){
         L.push("BEGIN:VEVENT", `UID:${x.role}-${x.id}-${y}${m}@afs-hub`, `DTSTAMP:${stamp}`, `DTSTART;VALUE=DATE:${icsDate(s)}`, `DTEND;VALUE=DATE:${icsDate(e)}`,
                `SUMMARY:${icsEscape((role === "rsm" ? "[RSM] " : "[PS] ") + ttl(x))}`, `DESCRIPTION:${desc(x)}`, ...alarm, "END:VEVENT");
       }
-    } else if (x.focus.length){
+    } else if (x.focus.length){ /* weekly + ongoing with focus days */
       const BY = ["SU","MO","TU","WE","TH","FR","SA"];
       const s = new Date(n); while (!x.focus.includes(s.getDay())) s.setDate(s.getDate() + 1);
       const e = new Date(s); e.setDate(e.getDate() + 1);
@@ -760,10 +768,10 @@ let draft = null, mdraft = null, editIdx = null, dirty = false, mtab = "menu", p
 let tdraft = null;
 const DOWS = ["อา","จ","อ","พ","พฤ","ศ","ส"];
 function taskListHTML(){
-  const row = (x, i) => `<div class="mrow"><div class="mi" style="font-size:12px;font-weight:600">${x.repeat === "ongoing" ? "ทุกวัน" : rangeText(x.from, x.to)}</div>
+  const row = (x, i) => `<div class="mrow"><div class="mi" style="font-size:11px;font-weight:600;text-align:center;line-height:1.1">${x.repeat === "ongoing" ? "ทุกวัน" : (x.repeat === "weekly" ? x.focus.map(k => DOWS[k]).join(" ") : rangeText(x.from, x.to))}</div>
     <div class="tx"><b>${esc(x.title_th || x.title_en)}</b><small>${x.role === "rsm" ? "RSM" : "PS"}${x.short ? " · " + esc(x.short) : ""}${x.links.length ? " · ลิงก์ " + x.links.length : ""}</small></div>${rowActs(i, tdraft.length)}</div>`;
   return `<h2>จัดการงานประจำเดือน</h2>
-    <p class="hint">งานรายเดือนใส่ช่วงวันที่ (ถ้าเดือนนั้นไม่มีวันที่ 30/31 ระบบเลื่อนเป็นวันสุดท้ายของเดือนให้เอง) · งานที่ทำทุกวันเลือก "ทุกวัน"</p>
+    <p class="hint">รอบงานมี 3 แบบ: <b>ทุกเดือน</b> (ช่วงวันที่ — ถ้าเดือนนั้นไม่มีวันที่ 30/31 เลื่อนเป็นวันสุดท้ายให้เอง) · <b>ทุกสัปดาห์</b> (เลือกวัน จ–อา) · <b>ทุกวัน</b></p>
     <div class="mlist">${tdraft.map(row).join("") || `<p class="hint">ยังไม่มีงาน</p>`}</div>
     <button class="ghost small" data-a="add" style="margin-top:12px">＋ เพิ่มงาน</button>`;
 }
@@ -774,10 +782,10 @@ function drawTaskForm(i){
     <h2>${i == null ? "เพิ่มงาน" : "แก้ไขงาน"}</h2>
     <div class="form">
       <label>ของใคร<select id="kRole"><option value="ps" ${x.role === "ps" ? "selected" : ""}>GWM Partner (PS)</option><option value="rsm" ${x.role === "rsm" ? "selected" : ""}>GWM RSM</option></select></label>
-      <label>รอบงาน<select id="kRep"><option value="monthly" ${x.repeat === "monthly" ? "selected" : ""}>ทุกเดือน (ช่วงวันที่)</option><option value="ongoing" ${x.repeat === "ongoing" ? "selected" : ""}>ทำทุกวัน</option></select></label>
+      <label>รอบงาน<select id="kRep"><option value="monthly" ${x.repeat === "monthly" ? "selected" : ""}>ทุกเดือน (ช่วงวันที่)</option><option value="weekly" ${x.repeat === "weekly" ? "selected" : ""}>ทุกสัปดาห์ (เลือกวัน)</option><option value="ongoing" ${x.repeat === "ongoing" ? "selected" : ""}>ทำทุกวัน</option></select></label>
       <label class="kM">ตั้งแต่วันที่<select id="kFrom">${days.map(d => `<option ${d === x.from ? "selected" : ""}>${d}</option>`).join("")}</select></label>
       <label class="kM">ถึงวันที่<select id="kTo">${days.map(d => `<option ${d === x.to ? "selected" : ""}>${d}</option>`).join("")}</select></label>
-      <label class="full kO">วันที่เน้นเป็นพิเศษ (ไม่บังคับ)<div class="chk">${DOWS.map((n, k) => `<span><input type="checkbox" class="kF" value="${k}" ${x.focus.includes(k) ? "checked" : ""}> ${n}</span>`).join("")}</div></label>
+      <label class="full kO"><span id="kOLabel">วันที่เน้นเป็นพิเศษ (ไม่บังคับ)</span><div class="chk">${DOWS.map((n, k) => `<span><input type="checkbox" class="kF" value="${k}" ${x.focus.includes(k) ? "checked" : ""}> ${n}</span>`).join("")}</div></label>
       <label class="full">ชื่องาน (TH) *<input type="text" id="kTh" value="${esc(x.title_th)}" placeholder="เช่น Upload SSOS เข้า Share drive"></label>
       <label>ชื่องาน (EN)<input type="text" id="kEn" value="${esc(x.title_en)}"></label>
       <label>ชื่อสั้นบนปฏิทิน<input type="text" id="kShort" value="${esc(x.short)}" placeholder="เช่น SSOS"></label>
@@ -787,7 +795,8 @@ function drawTaskForm(i){
     </div>
     <div class="msg bad" id="formMsg"></div>
     <div class="bar"><button class="ghost small" data-a="back">← กลับ</button><button class="enter small" data-a="apply">ตกลง</button></div>`;
-  const sync = () => { const on = $("kRep").value === "monthly"; panel.querySelectorAll(".kM").forEach(e => e.classList.toggle("hide", !on)); panel.querySelector(".kO").classList.toggle("hide", on); };
+  const sync = () => { const v = $("kRep").value, on = v === "monthly"; panel.querySelectorAll(".kM").forEach(e => e.classList.toggle("hide", !on)); panel.querySelector(".kO").classList.toggle("hide", on);
+    $("kOLabel").textContent = v === "weekly" ? "ทำทุกวันไหนของสัปดาห์ *" : "วันที่เน้นเป็นพิเศษ (ไม่บังคับ)"; };
   $("kRep").onchange = sync; sync();
 }
 function readTaskForm(){
@@ -798,6 +807,7 @@ function readTaskForm(){
     links:$("kLinks").value.split("\n").map(s => s.trim()).filter(Boolean).map(s => { const p = s.split("|"); const url = (p.length > 1 ? p.slice(1).join("|") : p[0]).trim(); return {label:(p.length > 1 ? p[0].trim() : "ลิงก์") || "ลิงก์", url:/^https?:\/\//i.test(url) ? url : "https://" + url}; }) };
   if (!x.title_th && !x.title_en) return "ใส่ชื่องานก่อน";
   if (x.repeat === "monthly" && x.to < x.from) return "วันที่สิ้นสุดต้องไม่ก่อนวันที่เริ่ม";
+  if (x.repeat === "weekly" && !x.focus.length) return "เลือกอย่างน้อย 1 วันในสัปดาห์";
   if (x.repeat === "monthly") x.focus = [];
   return x;
 }
