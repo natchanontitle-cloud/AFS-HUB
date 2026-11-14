@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f4f7fb">
+  <title>วิธีใช้ตารางนัดหมาย | GCIP</title>
+  <style>
+    :root{--navy:#102c52;--blue:#1671d9;--cyan:#55c7d9;--ink:#182c45;--muted:#62748b;--line:#dce5ef;--paper:#fff;--bg:#f3f7fb;--gold:#ffd85d}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,"Leelawadee UI",sans-serif;line-height:1.6}
+    .poster{max-width:1100px;margin:32px auto;padding:26px;background:#fff;border-radius:26px;box-shadow:0 22px 70px #1e42631a;overflow:hidden}
+    header{position:relative;padding:44px 48px 40px;color:white;background:linear-gradient(120deg,#102c52,#174d82 70%,#1671d9);border-radius:20px;overflow:hidden}
+    header:after{content:"";position:absolute;width:300px;height:300px;border:1px solid #ffffff24;border-radius:50%;right:-55px;top:-130px;box-shadow:0 0 0 34px #ffffff0c,0 0 0 70px #ffffff09}
+    .eyebrow{margin:0 0 8px;color:#b8e8f2;font-weight:700;letter-spacing:.06em}.title{margin:0;font-size:clamp(2rem,5vw,3.45rem);line-height:1.2}.subtitle{max-width:690px;margin:14px 0 0;color:#e5effb;font-size:1.08rem}.pill{display:inline-flex;align-items:center;gap:8px;margin-top:22px;padding:8px 14px;background:#ffffff19;border:1px solid #ffffff35;border-radius:999px;font-size:.88rem}
+    .route{display:flex;align-items:center;justify-content:center;gap:12px;padding:22px 10px 26px;color:#50637a;font-weight:700}.route b{display:grid;place-items:center;width:32px;height:32px;background:#e6f3fb;color:#1671d9;border-radius:50%}.route i{width:54px;height:2px;background:#cbd9e7}
+    .steps{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.step{position:relative;padding:24px;background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:0 5px 18px #1e42630a}.step-head{display:flex;align-items:flex-start;gap:14px}.number{flex:none;display:grid;place-items:center;width:43px;height:43px;color:white;background:var(--blue);border-radius:13px;font-size:1.25rem;font-weight:800}.step h2{margin:0;font-size:1.14rem;line-height:1.45}.step p{margin:5px 0 0;color:var(--muted);font-size:.93rem}.mock{margin-top:17px;border:1px solid #d7e0eb;border-radius:12px;background:#f7f9fc;overflow:hidden}.mockbar{display:flex;align-items:center;gap:9px;padding:9px 12px;background:#10294a;color:white;font-size:.76rem;font-weight:700}.dot{width:7px;height:7px;background:#71cce0;border-radius:50%}.mockbody{padding:12px}.row{display:flex;align-items:center;gap:10px;min-height:33px;padding:5px 8px;background:white;border:1px solid #e5ebf2;border-radius:7px;font-size:.78rem;color:#475d77}.row+.row{margin-top:7px}.row strong{color:#183e68}.highlight{margin-left:auto;padding:3px 7px;border-radius:5px;background:#fff2b9;color:#694d00;font-weight:700;white-space:nowrap}.tiny{font-size:.71rem;color:#71839a}.selection{border-color:#85b8f0;box-shadow:0 0 0 2px #d5eaff}
+    .upload{padding:19px;text-align:center;border:2px dashed #b8cbe0;border-radius:10px;background:#fff;color:#556f8b;font-size:.84rem}.upload strong{color:#1b3d65}.excel{display:flex;align-items:center;gap:10px;padding:10px;background:#fff;border:1px solid #e3e9f0;border-radius:8px}.excel-icon{display:grid;place-items:center;width:34px;height:38px;background:#198754;color:white;border-radius:5px;font-weight:800}.excel small{display:block;color:#71839a}.excel em{margin-left:auto;color:#198754;font-size:.75rem;font-style:normal;font-weight:700}
+    .note{margin-top:20px;padding:16px 20px;border-radius:14px;background:#eaf6fa;color:#33566d;display:flex;gap:12px;align-items:flex-start}.note strong{color:#164568}.tipicon{flex:none;display:grid;place-items:center;width:27px;height:27px;border-radius:50%;background:#d2eff4;color:#14748b;font-weight:800}.footer{margin:18px 4px 0;display:flex;justify-content:space-between;gap:10px;color:#718198;font-size:.78rem}
+    @media(max-width:680px){.poster{margin:0;padding:12px;border-radius:0}.poster>header{padding:30px 24px;border-radius:17px}.steps{grid-template-columns:1fr}.step{padding:19px}.route{gap:7px;font-size:.83rem}.route i{width:25px}.footer{flex-direction:column}.subtitle{font-size:.98rem}}
+    @media print{body{background:white}.poster{margin:0;max-width:none;box-shadow:none}.step{break-inside:avoid}}
+  </style>
+</head>
+<body>
+  <main class="poster">
+    <header>
+      <p class="eyebrow">คู่มือใช้งาน · GCIP</p>
+      <h1 class="title">วิธีใช้ตารางนัดหมาย</h1>
+      <p class="subtitle">ส่งออกข้อมูลนัดหมายจากระบบ แล้วอัปโหลดไฟล์ Excel เพื่อตรวจตารางนัดหมาย PS ได้ง่าย ๆ</p>
+      <span class="pill">⏱ ทำตามได้ใน 4 ขั้นตอน</span>
+    </header>
+    <div class="route" aria-label="ขั้นตอน"><b>1</b><i></i><b>2</b><i></i><b>3</b><i></i><b>4</b></div>
+    <section class="steps" aria-label="ขั้นตอนการใช้งาน">
+      <article class="step">
+        <div class="step-head"><span class="number">1</span><div><h2>เข้าใช้งาน GCIP</h2><p>เข้าสู่ระบบ GCIP ด้วยบัญชีผู้ใช้งานของคุณ</p></div></div>
+        <div class="mock"><div class="mockbar"><span class="dot"></span> GCIP · GWM</div><div class="mockbody"><div class="row"><strong>เมนูหลัก</strong><span class="tiny">เลือกหมวดงานที่ต้องการ</span></div></div></div>
+      </article>
+      <article class="step">
+        <div class="step-head"><span class="number">2</span><div><h2>เลือกหมวด 12</h2><p>เปิดหมวด <strong>งานบำรุงรักษาและซ่อมแซม</strong></p></div></div>
+        <div class="mock"><div class="mockbar"><span class="dot"></span> หมวดงานใน GCIP</div><div class="mockbody"><div class="row"><strong>12 · งานบำรุงรักษาและซ่อมแซม</strong><span class="highlight">เลือกหมวดนี้</span></div></div></div>
+      </article>
+      <article class="step">
+        <div class="step-head"><span class="number">3</span><div><h2>เลือกข้อมูลและส่งออก Excel</h2><p>ทำตามภาพอ้างอิงในหน้ารายการนัดหมาย</p></div></div>
+        <div class="mock"><div class="mockbar"><span class="dot"></span> รายการข้อมูลใน GCIP</div><div class="mockbody">
+          <div class="row selection"><strong>ข้อมูลการนัดหมาย</strong><span class="highlight">① เลือกเมนู</span></div>
+          <div class="row"><span>วันที่นัดหมาย</span><strong>01/12/2026 – 31/12/2026</strong><span class="highlight">② เลือกช่วงวันที่</span></div>
+          <div class="row"><span class="tiny">ตัวอย่าง: เดือนหน้า</span><span class="highlight">③ ส่งออกไปที่ Excel</span></div>
+        </div></div>
+      </article>
+      <article class="step">
+        <div class="step-head"><span class="number">4</span><div><h2>อัปโหลดไฟล์ในหน้าตรวจตาราง</h2><p>นำไฟล์ Excel ที่ส่งออกมาใส่ในช่องตามภาพที่ 2</p></div></div>
+        <div class="mock"><div class="mockbar"><span class="dot"></span> ตรวจตารางเวลานัดหมาย PS</div><div class="mockbody">
+          <div class="upload">ลากไฟล์ Excel มาวางที่นี่<br><strong>หรือเลือกไฟล์จากเครื่อง</strong></div>
+          <div class="excel" style="margin-top:8px"><span class="excel-icon">X</span><span><strong>ไฟล์ตารางนัดหมาย.xlsx</strong><small>ไฟล์ที่ส่งออกจาก GCIP</small></span><em>พร้อมอัปโหลด</em></div>
+        </div></div>
+      </article>
+    </section>
+    <aside class="note"><span class="tipicon">i</span><div><strong>เคล็ดลับ</strong><br>เลือกช่วงวันที่ให้ตรงกับรอบที่ต้องการตรวจ เช่น เดือนหน้า แล้วอัปโหลดไฟล์ Excel ที่ส่งออกจาก GCIP</div></aside>
+    <div class="footer"><span>คู่มือการใช้งานตารางนัดหมาย</span><span>GCIP → ส่งออก Excel → อัปโหลดเพื่อตรวจตาราง</span></div>
+  </main>
+</body>
+</html>
