@@ -146,8 +146,45 @@ details.gh ol{margin:10px 0 0;padding-left:20px;color:var(--muted);font-size:13p
 .msg.ok{color:#1E7A3C}.msg.bad{color:var(--red)}
 .toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:12px;font-size:14px;z-index:60;display:none;max-width:90vw}
 @media (max-width:560px){.form{grid-template-columns:1fr}}
+/* manuals */
+.bookbtn{display:inline-flex;align-items:center;gap:6px;height:38px;padding:0 14px;border-radius:999px;border:1px solid var(--line);background:var(--card);cursor:pointer;font-size:13px;font-weight:500;color:var(--ink)}
+.bookbtn:hover{border-color:var(--red);color:var(--red)}
+.bookbtn svg{width:16px;height:16px}
+.mod .go .howto{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:3px 10px;margin-right:auto;margin-left:10px;letter-spacing:0;background:var(--card)}
+.mod .go .howto:hover{color:var(--red);border-color:var(--red)}
+.mgroup{margin-bottom:26px}
+.mgroup h3{font-size:15px;font-weight:600;margin:0 0 10px;color:var(--muted);letter-spacing:.3px}
+.mangrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.man{display:flex;gap:14px;align-items:center;text-align:left;width:100%;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;cursor:pointer;box-shadow:var(--shadow);transition:border-color .2s,transform .2s;font:inherit;color:inherit}
+.man:hover{border-color:color-mix(in srgb, var(--red) 35%, var(--line));transform:translateY(-2px)}
+.man .mi{width:42px;height:42px;border-radius:12px;background:var(--red-soft);color:var(--red);display:grid;place-items:center;flex:none}
+.man .mi svg{width:21px;height:21px}
+.man b{display:block;font-weight:500;font-size:15px;line-height:1.35}
+.man small{color:var(--muted);font-size:12px}
+.new{display:inline-block;font-size:10.5px;font-weight:600;letter-spacing:.5px;background:var(--red);color:#fff;border-radius:999px;padding:1px 7px;margin-left:6px;vertical-align:middle}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:-6px 0 22px}
+.chips button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:999px;padding:6px 12px;cursor:pointer}
+.chips button.on{background:var(--red);border-color:var(--red);color:#fff}
+.viewer{position:fixed;inset:0;z-index:50;background:var(--bg);display:none;flex-direction:column}
+.viewer.on{display:flex}
+.vbar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);background:var(--card)}
+.vbar b{flex:1;min-width:0;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vbody{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;display:flex}
+.vbody iframe{flex:1;border:0;width:100%;height:100%;background:#fff}
+.vbody .imgwrap{flex:1;overflow:auto;display:flex;justify-content:center;align-items:flex-start;padding:12px}
+.vbody img{max-width:100%;height:auto;cursor:zoom-in;border-radius:6px;box-shadow:var(--shadow)}
+.vbody img.zoom{max-width:none;cursor:zoom-out}
+.vnote{padding:8px 14px;font-size:13px;color:var(--muted);background:var(--card);border-top:1px solid var(--line)}
+.tabs2{display:flex;gap:6px;margin:0 0 16px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:4px;width:max-content}
+.tabs2 button{font:inherit;font-size:14px;border:0;background:none;padding:7px 16px;border-radius:9px;cursor:pointer;color:var(--muted)}
+.tabs2 button.on{background:var(--card);color:var(--ink);font-weight:500;box-shadow:var(--shadow)}
+.filebox{border:1.5px dashed var(--line);border-radius:12px;padding:14px;text-align:center;color:var(--muted);font-size:13.5px;cursor:pointer;background:var(--bg)}
+.filebox:hover{border-color:var(--red);color:var(--red)}
+.filebox b{color:var(--ink)}
 .hide{display:none!important}
 @media (max-width:640px){
+  .bookbtn span{display:none}
+  .bookbtn{padding:0;width:38px;justify-content:center}
   .doors{grid-template-columns:1fr}
   .brand small{display:none}
   .brand b{font-size:17px}
@@ -161,6 +198,7 @@ details.gh ol{margin:10px 0 0;padding-left:20px;color:var(--muted);font-size:13p
 <div class="top"><div class="wrap">
   <button class="brand" id="home"><div class="logo">G</div><div><b>GWM-AFS HUB</b><small data-t="tagline"></small></div></button>
   <div class="ctrls">
+    <button class="bookbtn" id="btnMan" aria-label="Manual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H4zM20 4h-6a3 3 0 0 0-3 3v14a2 2 0 0 1 2-2h7z"/></svg><span data-t="manuals"></span></button>
     <div class="seg" id="lang"><button data-l="th">TH</button><button data-l="en">EN</button></div>
     <button class="iconbtn" id="theme" aria-label="Day / Night"></button>
   </div>
@@ -202,12 +240,30 @@ details.gh ol{margin:10px 0 0;padding-left:20px;color:var(--muted);font-size:13p
     </div>
     <div class="grid" id="grid"></div>
   </section>
+
+  <section id="vMan" class="wrap hide">
+    <div class="phead">
+      <div>
+        <button class="back" id="manBack">← <span data-t="back"></span></button>
+        <h1 data-t="manTitle"></h1>
+        <div class="sub" data-t="manSub"></div>
+      </div>
+      <div class="pbtns"><button class="ghost hide" id="manManage">＋ <span data-t="manManage"></span></button></div>
+    </div>
+    <div class="chips" id="manChips"></div>
+    <div id="manList" style="padding-bottom:8vh"></div>
+  </section>
 </main>
 
 <footer><div class="wrap"><span>© 2026 GWM-AFS HUB</span><span>by Natchanon C.</span></div></footer>
 
 <div class="sheet" id="sheet"><div class="panel" id="panel"></div></div>
 <div class="toast" id="toast"></div>
+<div class="viewer" id="viewer">
+  <div class="vbar"><button class="ghost small" id="vClose">← <span data-t="back"></span></button><b id="vTitle"></b><a class="ghost small" id="vOpen" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span data-t="openTab"></span> ↗</a></div>
+  <div class="vbody" id="vBody"></div>
+  <div class="vnote hide" id="vNote" data-t="pdfNote"></div>
+</div>
 <div class="mask" id="mask">
   <form class="lock" id="lockForm" autocomplete="on">
     <div class="di"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg></div>
@@ -244,17 +300,17 @@ const DEFAULT_MODULES = [
 const RSM_HASH = "b40d417bbd958de90a54ff1141839977fe25e5d0825a045befa047320f216f7e";
 
 /* Where "Save to web" writes modules.json (GitHub repo of this hub) */
-const GH_DEFAULT = { owner:"natchanontitle-cloud", repo:"GWM-AFS-HUB", branch:"main", path:"modules.json" };
+const GH_DEFAULT = { owner:"natchanontitle-cloud", repo:"AFS-HUB", branch:"main", path:"modules.json" };
 
 const T = {
   th:{ tagline:"After-Sales Management", hero1:"ศูนย์รวมเครื่องมือ", hero2:"Aftersales - RSM", heroSub:"พื้นที่ทำงานกลางสำหรับงานบริการหลังการขาย GWM",
        partnerDesc:"สำหรับศูนย์บริการ (PS)", rsmDesc:"สำหรับ Regional Service Manager", needPw:"ต้องใส่รหัสผ่าน", enter:"เข้าสู่ระบบ", tools:n=>`${n} เครื่องมือ`,
        backHome:"หน้าแรก", logout:"ออกจากระบบ", manage:"จัดการเมนู", lockSub:"ใส่รหัสผ่าน RSM เพื่อเข้าใช้งาน", remember:"จำรหัสในเครื่องนี้", wrongPw:"รหัสผ่านไม่ถูกต้อง",
-       cancel:"ยกเลิก", open:"เปิดใช้งาน", soon:"เร็ว ๆ นี้", ready:n=>`${n} เครื่องมือพร้อมใช้งาน`, partnerWs:"Partner workspace", rsmWs:"Management workspace", both:"PS + RSM", rsmOnly:"RSM" },
+       cancel:"ยกเลิก", open:"เปิดใช้งาน", manuals:"คู่มือ", howto:"วิธีใช้", manTitle:"คู่มือการใช้งาน", manSub:"วิธีใช้เครื่องมือแต่ละตัว — กดเพื่อเปิดอ่าน", manManage:"จัดการคู่มือ", back:"กลับ", all:"ทั้งหมด", general:"ทั่วไป", new:"ใหม่", noManual:"ยังไม่มีคู่มือ", openTab:"เปิดแท็บใหม่", pdfNote:"ถ้า PDF ไม่แสดงในมือถือ กด \"เปิดแท็บใหม่\" ด้านบน", soon:"เร็ว ๆ นี้", ready:n=>`${n} เครื่องมือพร้อมใช้งาน`, partnerWs:"Partner workspace", rsmWs:"Management workspace", both:"PS + RSM", rsmOnly:"RSM" },
   en:{ tagline:"After-Sales Management", hero1:"One Hub", hero2:"for AFS tools", heroSub:"Your central workspace for GWM after-sales operations.",
        partnerDesc:"Partner workspace for service centers", rsmDesc:"Management workspace for RSMs", needPw:"Password required", enter:"ENTER", tools:n=>`${n} tools`,
        backHome:"Home", logout:"Log out", manage:"Manage menu", lockSub:"Enter the RSM password to continue", remember:"Remember on this device", wrongPw:"Incorrect password",
-       cancel:"Cancel", open:"Open", soon:"Coming soon", ready:n=>`${n} tools available`, partnerWs:"Partner workspace", rsmWs:"Management workspace", both:"PS + RSM", rsmOnly:"RSM" }
+       cancel:"Cancel", open:"Open", manuals:"Manuals", howto:"How-to", manTitle:"User manuals", manSub:"How to use each tool — tap to open", manManage:"Manage manuals", back:"Back", all:"All", general:"General", new:"NEW", noManual:"No manuals yet", openTab:"Open in new tab", pdfNote:"If the PDF does not show on mobile, tap \"Open in new tab\" above", soon:"Coming soon", ready:n=>`${n} tools available`, partnerWs:"Partner workspace", rsmWs:"Management workspace", both:"PS + RSM", rsmOnly:"RSM" }
 };
 const ICONS = {
   vor:'<path d="M5 17h14M6 17l1.5-5h9L18 17M7 12l1.2-4h7.6L17 12"/><circle cx="8" cy="17.5" r="1.6"/><circle cx="16" cy="17.5" r="1.6"/>',
@@ -319,7 +375,9 @@ function applyLang(){
 }
 function render(){
   $("vHome").classList.toggle("hide", view !== "home");
-  $("vMods").classList.toggle("hide", view === "home");
+  $("vMods").classList.toggle("hide", view !== "partner" && view !== "rsm");
+  $("vMan").classList.toggle("hide", view !== "manuals");
+  if (view === "manuals"){ $("manManage").classList.toggle("hide", !canRsm()); renderManuals(); return; }
   if (view === "home") return;
   const isR = view === "rsm";
   $("pTitle").innerHTML = isR ? "GWM <span>RSM</span>" : "GWM <span>Partner</span>";
@@ -331,12 +389,14 @@ function render(){
     const tag = isR ? `<span class="tag">${m.roles.includes("partner") ? t("both") : t("rsmOnly")}</span>` : "";
     const body = `<div class="mi">${svg(m.icon)}</div>${tag}<h3>${esc(nm(m))}</h3><p>${esc(ds(m))}</p>`;
     return m.url
-      ? `<a class="mod" href="${esc(m.url)}" target="_blank" rel="noopener">${body}<div class="go"><span>${t("open")}</span><i>→</i></div></a>`
+      ? `<a class="mod" href="${esc(m.url)}" target="_blank" rel="noopener">${body}<div class="go"><span>${t("open")}</span>${manualsFor(modKey(m)).length ? `<span class="howto" data-howto="${esc(modKey(m))}">📘 ${t("howto")}</span>` : ""}<i>→</i></div></a>`
       : `<div class="mod" style="opacity:.6">${body}<div class="go" style="color:var(--muted)"><span>${t("soon")}</span></div></div>`;
   }).join("") || `<p style="color:var(--muted)">—</p>`;
 }
+let lastView = "home";
 function go(v){
   if (v === "rsm" && store.get("afsRsm") !== "1"){ openLock(); return; }
+  if (v === "manuals" && view !== "manuals") lastView = view;
   view = v; render(); window.scrollTo(0, 0);
   try { history.replaceState(null, "", v === "home" ? location.pathname + location.search : "#" + v); } catch(e){}
 }
@@ -360,33 +420,94 @@ $("eye").onclick = () => { const p = $("pw"); p.type = p.type === "password" ? "
 $("cancel").onclick = closeLock;
 $("mask").onclick = e => { if (e.target.id === "mask") closeLock(); };
 
-/* ---------- menu manager (RSM only) ---------- */
-let draft = null, editIdx = null, dirty = false;
+/* ---------- manuals (คู่มือ) ---------- */
+let MANUALS = [];
+let manFilter = "__all";
+const BOOK = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H4zM20 4h-6a3 3 0 0 0-3 3v14a2 2 0 0 1 2-2h7z"/></svg>';
+const KIND_ICON = {
+  html:'<path d="M4 4h16v16H4z"/><path d="M4 9h16M9 13l-2 2 2 2M15 13l2 2-2 2"/>',
+  pdf:'<path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6M9 13h6M9 17h4"/>',
+  image:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 17l-5-5-9 8"/>',
+  link:ICONS.link
+};
+const KIND_LABEL = {html:"คู่มือ", pdf:"PDF", image:"รูป", link:"ลิงก์"};
+const kindOf = s => { const x = String(s || "").toLowerCase().split("?")[0];
+  if (/\.(png|jpe?g|webp|gif|svg)$/.test(x)) return "image"; if (/\.pdf$/.test(x)) return "pdf"; if (/\.html?$/.test(x)) return "html"; return "link"; };
+const mt = m => (lang === "en" ? m.title_en : m.title_th) || m.title_th || m.title_en || "";
+const isNew = m => m.added && (Date.now() - new Date(m.added).getTime()) < 14 * 864e5;
+const canRsm = () => store.get("afsRsm") === "1";
+const visibleManuals = () => MANUALS.filter(m => m.roles.includes("partner") || (canRsm() && m.roles.includes("rsm")));
+const modKey = m => m.name_th || m.name_en || "";
+const looseKey = s => String(s || "").replace(/\(.*?\)/g, "").replace(/\s+/g, "").toLowerCase();
+const sameMod = (a, b) => a === b || (looseKey(a) && looseKey(a) === looseKey(b));
+const manualsFor = mod => visibleManuals().filter(x => sameMod(x.module, mod));
+function normManuals(list){
+  return (Array.isArray(list) ? list : []).map(m => ({
+    title_th:String(m.title_th || "").trim(), title_en:String(m.title_en || "").trim(), module:String(m.module || ""),
+    src:String(m.src || "").trim(), kind:m.kind || kindOf(m.src), added:m.added || "",
+    roles:(Array.isArray(m.roles) ? m.roles : ["partner","rsm"]).filter(r => r === "partner" || r === "rsm")
+  })).filter(m => (m.title_th || m.title_en) && m.src);
+}
+async function loadManuals(){
+  if (location.protocol === "file:") setTimeout(() => toast("กำลังเปิดจากไฟล์ในเครื่อง — คู่มือและเมนูจะโหลดไม่ได้ ให้เปิดจากลิงก์ github.io แทน", 6000), 800);
+  try { const r = await fetch("manuals.json?v=" + Date.now(), {cache:"no-store"}); if (r.ok){ const j = await r.json(); MANUALS = normManuals(j.manuals || j); } } catch(e){}
+  applyLang();
+}
+function manCard(m, i){
+  return `<button class="man" data-man="${i}"><div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${KIND_ICON[m.kind] || KIND_ICON.link}</svg></div>
+    <div><b>${esc(mt(m))}${isNew(m) ? `<span class="new">${t("new")}</span>` : ""}</b><small>${esc(KIND_LABEL[m.kind] || "")}${m.module ? " · " + esc(modName(m.module)) : ""}</small></div></button>`;
+}
+const modName = key => { const m = MODULES.find(x => sameMod(modKey(x), key)); return m ? nm(m) : key; };
+function renderManuals(){
+  const list = visibleManuals();
+  const mods = [...new Set(list.map(m => m.module))];
+  if (manFilter !== "__all" && !mods.includes(manFilter)) manFilter = "__all";
+  $("manChips").innerHTML = mods.length > 1 ? [`<button data-mf="__all" class="${manFilter === "__all" ? "on" : ""}">${t("all")}</button>`, ...mods.map(k => `<button data-mf="${esc(k)}" class="${manFilter === k ? "on" : ""}">${esc(k ? modName(k) : t("general"))}</button>`)].join("") : "";
+  const shown = list.filter(m => manFilter === "__all" || m.module === manFilter);
+  const order = [...MODULES.map(modKey), ""];
+  const groups = [...new Set(shown.map(m => m.module))].sort((a,b) => (order.indexOf(a) + 1 || 99) - (order.indexOf(b) + 1 || 99));
+  $("manList").innerHTML = groups.map(g => `<div class="mgroup"><h3>${esc(g ? modName(g) : t("general"))}</h3><div class="mangrid">${shown.filter(m => m.module === g).map(m => manCard(m, MANUALS.indexOf(m))).join("")}</div></div>`).join("")
+    || `<p style="color:var(--muted)">${t("noManual")}</p>`;
+}
+function openManual(m){
+  if (m.kind === "link"){ window.open(m.src, "_blank", "noopener"); return; }
+  $("vTitle").textContent = mt(m);
+  $("vOpen").href = m.src;
+  const b = $("vBody");
+  if (m.kind === "image") b.innerHTML = `<div class="imgwrap"><img src="${esc(m.src)}" alt="${esc(mt(m))}"></div>`;
+  else b.innerHTML = `<iframe src="${esc(m.src)}" title="${esc(mt(m))}"></iframe>`;
+  $("vNote").classList.toggle("hide", m.kind !== "pdf");
+  $("viewer").classList.add("on"); document.body.style.overflow = "hidden";
+}
+function closeViewer(){ $("viewer").classList.remove("on"); $("vBody").innerHTML = ""; document.body.style.overflow = ""; }
+$("vClose").onclick = closeViewer;
+$("vBody").addEventListener("click", e => { if (e.target.tagName === "IMG") e.target.classList.toggle("zoom"); });
+$("manList").addEventListener("click", e => { const b = e.target.closest("[data-man]"); if (b) openManual(MANUALS[+b.dataset.man]); });
+$("manChips").addEventListener("click", e => { const b = e.target.closest("[data-mf]"); if (b){ manFilter = b.dataset.mf; renderManuals(); } });
+$("grid").addEventListener("click", e => {
+  const h = e.target.closest("[data-howto]"); if (!h) return;
+  e.preventDefault(); e.stopPropagation();
+  const list = manualsFor(h.dataset.howto);
+  if (list.length === 1) openManual(list[0]); else { manFilter = h.dataset.howto; go("manuals"); }
+});
+$("btnMan").onclick = () => { manFilter = "__all"; go("manuals"); };
+$("manBack").onclick = () => go(lastView || "home");
+
+/* ---------- manager (RSM only): menus + manuals ---------- */
+let draft = null, mdraft = null, editIdx = null, dirty = false, mtab = "menu", pendingDel = [];
 const sheet = $("sheet"), panel = $("panel");
-function openManager(){ draft = MODULES.map(m => ({...m, roles:[...m.roles]})); dirty = false; drawList(); sheet.classList.add("on"); }
+function openManager(tab){
+  draft = MODULES.map(m => ({...m, roles:[...m.roles]}));
+  mdraft = MANUALS.map(m => ({...m, roles:[...m.roles]}));
+  pendingDel = []; dirty = false; mtab = tab || "menu"; drawList(); sheet.classList.add("on");
+}
 function closeManager(){
   if (dirty && !window.__confirmClose){ window.__confirmClose = true; toast("ยังไม่ได้บันทึก — กดปิดอีกครั้งเพื่อทิ้งการแก้ไข"); setTimeout(() => window.__confirmClose = false, 3000); return; }
   window.__confirmClose = false; sheet.classList.remove("on");
 }
-function drawList(){
+function ghBlock(){
   const gh = ghCfg();
-  panel.innerHTML = `
-    <h2>จัดการเมนู</h2>
-    <p class="hint">เพิ่ม แก้ ลบ หรือเลื่อนลำดับกล่อง แล้วกด "บันทึกขึ้นเว็บ" ทุกคนจะเห็นเมนูใหม่ภายใน 1–2 นาที</p>
-    <div class="mlist">${draft.map((m, i) => `
-      <div class="mrow">
-        <div class="mi">${svg(m.icon)}</div>
-        <div class="tx"><b>${esc(m.name_th || m.name_en)}</b><small>${m.roles.includes("partner") ? "PS + RSM" : "RSM"} · ${m.url ? esc(m.url.replace(/^https?:\/\//, "")) : "เร็ว ๆ นี้"}</small></div>
-        <div class="acts">
-          <button class="sq" data-a="up" data-i="${i}" ${i === 0 ? "disabled" : ""} title="ขึ้น">↑</button>
-          <button class="sq" data-a="down" data-i="${i}" ${i === draft.length - 1 ? "disabled" : ""} title="ลง">↓</button>
-          <button class="sq" data-a="edit" data-i="${i}" title="แก้ไข">✎</button>
-          <button class="sq" data-a="del" data-i="${i}" title="ลบ">✕</button>
-        </div>
-      </div>`).join("")}
-    </div>
-    <button class="ghost small" data-a="add" style="margin-top:12px">＋ เพิ่มเมนูใหม่</button>
-    <details class="gh" ${gh.token ? "" : "open"}>
+  return `<details class="gh" ${gh.token ? "" : "open"}>
       <summary>ตั้งค่าการบันทึกขึ้น GitHub ${gh.token ? "✓" : "(ทำครั้งเดียว)"}</summary>
       <div class="form" style="margin-top:12px">
         <label>GitHub user<input type="text" id="ghOwner" value="${esc(gh.owner)}"></label>
@@ -398,18 +519,35 @@ function drawList(){
         <li>Repository access: เลือก <b>Only select repositories</b> → เลือก repo ของ Hub นี้</li>
         <li>Permissions → Repository → <b>Contents: Read and write</b> → Generate แล้ว copy มาวางช่องด้านบน</li>
       </ol>
-    </details>
-    <div class="msg" id="saveMsg"></div>
-    <div class="bar">
-      <button class="ghost small" data-a="close">ปิด</button>
-      <div class="r">
-        <button class="ghost small" data-a="download">ดาวน์โหลด modules.json</button>
-        <button class="enter small" data-a="save">บันทึกขึ้นเว็บ</button>
-      </div>
-    </div>`;
+    </details>`;
+}
+const rowActs = (i, n) => `<div class="acts">
+  <button class="sq" data-a="up" data-i="${i}" ${i === 0 ? "disabled" : ""} title="ขึ้น">↑</button>
+  <button class="sq" data-a="down" data-i="${i}" ${i === n - 1 ? "disabled" : ""} title="ลง">↓</button>
+  <button class="sq" data-a="edit" data-i="${i}" title="แก้ไข">✎</button>
+  <button class="sq" data-a="del" data-i="${i}" title="ลบ">✕</button></div>`;
+function drawList(){
+  const tabs = `<div class="tabs2"><button data-a="tab" data-t2="menu" class="${mtab === "menu" ? "on" : ""}">เมนู</button><button data-a="tab" data-t2="man" class="${mtab === "man" ? "on" : ""}">📘 คู่มือ</button></div>`;
+  let body;
+  if (mtab === "menu"){
+    body = `<h2>จัดการเมนู</h2>
+      <p class="hint">เพิ่ม แก้ ลบ หรือเลื่อนลำดับกล่อง แล้วกด "บันทึกขึ้นเว็บ" ทุกคนจะเห็นเมนูใหม่ภายใน 1–2 นาที</p>
+      <div class="mlist">${draft.map((m, i) => `<div class="mrow"><div class="mi">${svg(m.icon)}</div>
+        <div class="tx"><b>${esc(m.name_th || m.name_en)}</b><small>${m.roles.includes("partner") ? "PS + RSM" : "RSM"} · ${m.url ? esc(m.url.replace(/^https?:\/\//, "")) : "เร็ว ๆ นี้"}</small></div>${rowActs(i, draft.length)}</div>`).join("")}</div>
+      <button class="ghost small" data-a="add" style="margin-top:12px">＋ เพิ่มเมนูใหม่</button>`;
+  } else {
+    body = `<h2>จัดการคู่มือ</h2>
+      <p class="hint">แนบไฟล์ HTML, PDF หรือรูป (ไม่เกิน 20 MB) หรือใส่ลิงก์ (เช่น YouTube / Google Drive) แล้วกด "บันทึกขึ้นเว็บ"</p>
+      <div class="mlist">${mdraft.map((m, i) => `<div class="mrow"><div class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">${KIND_ICON[m.kind] || KIND_ICON.link}</svg></div>
+        <div class="tx"><b>${esc(m.title_th || m.title_en)}${m._file ? ' <span class="new">รออัปโหลด</span>' : ""}</b><small>${esc(m.module ? modName(m.module) : "ทั่วไป")} · ${m.roles.includes("partner") ? "PS + RSM" : "RSM"} · ${esc(KIND_LABEL[m.kind])}</small></div>${rowActs(i, mdraft.length)}</div>`).join("") || `<p class="hint">ยังไม่มีคู่มือ</p>`}</div>
+      <button class="ghost small" data-a="add" style="margin-top:12px">＋ เพิ่มคู่มือ</button>`;
+  }
+  panel.innerHTML = tabs + body + ghBlock() + `<div class="msg" id="saveMsg"></div>
+    <div class="bar"><button class="ghost small" data-a="close">ปิด</button><div class="r">${mtab === "menu" ? `<button class="ghost small" data-a="download">ดาวน์โหลด modules.json</button>` : ""}<button class="enter small" data-a="save">บันทึกขึ้นเว็บ</button></div></div>`;
 }
 function drawForm(i){
   editIdx = i;
+  if (mtab === "man") return drawManForm(i);
   const m = i == null ? {name_th:"", name_en:"", desc_th:"", desc_en:"", url:"", icon:"link", roles:["rsm"]} : draft[i];
   panel.innerHTML = `
     <h2>${i == null ? "เพิ่มเมนูใหม่" : "แก้ไขเมนู"}</h2>
@@ -428,6 +566,51 @@ function drawForm(i){
     <div class="msg bad" id="formMsg"></div>
     <div class="bar"><button class="ghost small" data-a="back">← กลับ</button><button class="enter small" data-a="apply">ตกลง</button></div>`;
 }
+let formFile = null;
+function drawManForm(i){
+  const m = i == null ? {title_th:"", title_en:"", module:"", src:"", kind:"html", roles:["partner","rsm"]} : mdraft[i];
+  formFile = m._file || null;
+  const isUrl = /^https?:\/\//i.test(m.src);
+  panel.innerHTML = `
+    <h2>${i == null ? "เพิ่มคู่มือ" : "แก้ไขคู่มือ"}</h2>
+    <p class="hint">เลือกไฟล์จากเครื่อง หรือใส่ลิงก์อย่างใดอย่างหนึ่ง</p>
+    <div class="form">
+      <label>ชื่อคู่มือ (TH) *<input type="text" id="fTTh" value="${esc(m.title_th)}" placeholder="เช่น วิธีใช้ตารางนัดหมาย"></label>
+      <label>ชื่อคู่มือ (EN)<input type="text" id="fTEn" value="${esc(m.title_en)}"></label>
+      <label class="full">ของเมนู<select id="fMod"><option value="">ทั่วไป (ไม่ผูกกับเมนู)</option>${MODULES.map(x => `<option value="${esc(modKey(x))}" ${sameMod(modKey(x), m.module) ? "selected" : ""}>${esc(modKey(x))}</option>`).join("")}</select></label>
+      <label class="full">ไฟล์ (HTML / PDF / รูป)
+        <div class="filebox" id="fBox">${formFile ? `<b>${esc(formFile.name)}</b> · ${(formFile.size/1024).toFixed(0)} KB — แตะเพื่อเปลี่ยน` : (m.src && !isUrl ? `ไฟล์ปัจจุบัน: <b>${esc(m.src.split("/").pop())}</b> — แตะเพื่อเปลี่ยนเป็นไฟล์ใหม่` : "แตะเพื่อเลือกไฟล์")}</div>
+        <input type="file" id="fFile" accept=".html,.htm,.pdf,image/*" hidden>
+      </label>
+      <label class="full">หรือ ลิงก์<input type="url" id="fLink" value="${isUrl ? esc(m.src) : ""}" placeholder="https://… (YouTube, Google Drive ฯลฯ)"></label>
+      <label class="full">ใครเห็นคู่มือนี้
+        <div class="chk"><span><input type="checkbox" id="fP" ${m.roles.includes("partner") ? "checked" : ""}> GWM Partner (PS)</span><span><input type="checkbox" id="fR" ${m.roles.includes("rsm") ? "checked" : ""}> GWM RSM</span></div>
+      </label>
+    </div>
+    <div class="msg bad" id="formMsg"></div>
+    <div class="bar"><button class="ghost small" data-a="back">← กลับ</button><button class="enter small" data-a="apply">ตกลง</button></div>`;
+  $("fBox").onclick = () => $("fFile").click();
+  $("fFile").onchange = e => {
+    const f = e.target.files[0]; if (!f) return;
+    if (f.size > 20 * 1024 * 1024){ $("formMsg").textContent = "ไฟล์ใหญ่เกิน 20 MB — ใส่เป็นลิงก์แทน"; return; }
+    const rd = new FileReader();
+    rd.onload = () => { formFile = {name:f.name, size:f.size, b64:String(rd.result).split(",")[1]}; $("fBox").innerHTML = `<b>${esc(f.name)}</b> · ${(f.size/1024).toFixed(0)} KB — แตะเพื่อเปลี่ยน`; $("fLink").value = ""; $("formMsg").textContent = ""; };
+    rd.readAsDataURL(f);
+  };
+}
+function readManForm(){
+  const old = editIdx == null ? null : mdraft[editIdx];
+  const roles = [$("fP").checked && "partner", $("fR").checked && "rsm"].filter(Boolean);
+  let link = $("fLink").value.trim();
+  const m = {title_th:$("fTTh").value.trim(), title_en:$("fTEn").value.trim(), module:$("fMod").value, roles, added: old ? old.added : new Date().toISOString().slice(0,10)};
+  if (!m.title_th && !m.title_en) return "ใส่ชื่อคู่มือก่อน";
+  if (!roles.length) return "เลือกอย่างน้อย 1 กลุ่มที่เห็นคู่มือนี้";
+  if (link){ if (!/^https?:\/\//i.test(link)) link = "https://" + link; m.src = link; m.kind = kindOf(link); if (old && old.src && !/^https?:/i.test(old.src)) pendingDel.push(old.src); }
+  else if (formFile){ m._file = formFile; m.kind = kindOf(formFile.name); m.src = old ? old.src : ""; m.added = new Date().toISOString().slice(0,10); }
+  else if (old && old.src){ m.src = old.src; m.kind = old.kind; if (old._file) m._file = old._file; }
+  else return "เลือกไฟล์ หรือใส่ลิงก์";
+  return m;
+}
 function readForm(){
   const roles = [$("fPartner").checked && "partner", $("fRsm").checked && "rsm"].filter(Boolean);
   const m = { name_th:$("fNameTh").value.trim(), name_en:$("fNameEn").value.trim(), desc_th:$("fDescTh").value.trim(), desc_en:$("fDescEn").value.trim(),
@@ -437,28 +620,62 @@ function readForm(){
   if (m.url && !/^https?:\/\//i.test(m.url)) m.url = "https://" + m.url;
   return m;
 }
-function ghCfg(){ let c = {}; try { c = JSON.parse(localStorage.getItem("afsGh") || "{}"); } catch(e){} return {...GH_DEFAULT, ...c}; }
+function ghCfg(){ let c = {}; try { c = JSON.parse(localStorage.getItem("afsGh") || "{}"); } catch(e){} c = {...GH_DEFAULT, ...c}; if (c.repo === "GWM-AFS-HUB") c.repo = GH_DEFAULT.repo; return c; }
 function saveGhCfg(){ const c = {...ghCfg(), owner:$("ghOwner").value.trim(), repo:$("ghRepo").value.trim(), token:$("ghTok").value.trim()}; try { localStorage.setItem("afsGh", JSON.stringify(c)); } catch(e){} return c; }
 const jsonText = () => JSON.stringify({ updated: new Date().toISOString(), modules: draft }, null, 2) + "\n";
+const manJsonText = () => JSON.stringify({ updated: new Date().toISOString(), manuals: mdraft.map(({_file, ...m}) => m) }, null, 2) + "\n";
 const b64utf8 = s => btoa(unescape(encodeURIComponent(s)));
+function ghApi(c, path){ return { api:`https://api.github.com/repos/${c.owner}/${c.repo}/contents/${path}`, H:{ "Authorization":"Bearer " + c.token, "Accept":"application/vnd.github+json" } }; }
+async function ghSha(c, path){
+  const {api, H} = ghApi(c, path);
+  const g = await fetch(`${api}?ref=${c.branch}`, {headers:H, cache:"no-store"});
+  if (g.ok) return (await g.json()).sha;
+  if (g.status === 401) throw new Error("token ใช้ไม่ได้ หรือหมดอายุ");
+  if (g.status !== 404) throw new Error("GitHub ตอบกลับ " + g.status);
+  return undefined;
+}
+async function ghPut(c, path, b64, message){
+  const {api, H} = ghApi(c, path); const sha = await ghSha(c, path);
+  const p = await fetch(api, {method:"PUT", headers:{...H, "Content-Type":"application/json"}, body: JSON.stringify({message, content:b64, branch:c.branch, ...(sha ? {sha} : {})})});
+  if (!p.ok){ const j = await p.json().catch(() => ({})); let m = j.message || ("GitHub ตอบกลับ " + p.status);
+    if (/not accessible/i.test(m)) m = "token ยังไม่มีสิทธิ์เขียน repo นี้ (ต้องเลือก repo นี้ใน token และตั้ง Contents: Read and write)";
+    else if (/not found/i.test(m)) m = "ไม่พบ repo — เช็คชื่อ repo ในกล่องตั้งค่า";
+    throw new Error(m); }
+}
+async function ghDel(c, path){
+  try { const sha = await ghSha(c, path); if (!sha) return; const {api, H} = ghApi(c, path);
+    await fetch(api, {method:"DELETE", headers:{...H, "Content-Type":"application/json"}, body: JSON.stringify({message:"Remove manual file", sha, branch:c.branch})}); } catch(e){}
+}
+const slugify = s => String(s || "").normalize("NFKD").replace(/[^\w\s-]/g, "").trim().replace(/\s+/g, "-").toLowerCase().slice(0, 30);
 async function saveToGitHub(){
   const c = saveGhCfg(), msg = $("saveMsg");
   if (!c.token){ msg.className = "msg bad"; msg.textContent = "ใส่ GitHub token ก่อน (ดูวิธีในกล่องตั้งค่า)"; panel.querySelector("details.gh").open = true; return; }
-  msg.className = "msg"; msg.textContent = "กำลังบันทึก…";
-  const api = `https://api.github.com/repos/${c.owner}/${c.repo}/contents/${c.path}`;
-  const H = { "Authorization":"Bearer " + c.token, "Accept":"application/vnd.github+json" };
+  msg.className = "msg";
   try {
-    let sha;
-    const g = await fetch(`${api}?ref=${c.branch}`, {headers:H, cache:"no-store"});
-    if (g.ok) sha = (await g.json()).sha;
-    else if (g.status === 401 || g.status === 403) throw new Error("token ใช้ไม่ได้ หรือไม่มีสิทธิ์เขียน repo นี้");
-    else if (g.status !== 404) throw new Error("GitHub ตอบกลับ " + g.status);
-    const p = await fetch(api, {method:"PUT", headers:{...H, "Content-Type":"application/json"},
-      body: JSON.stringify({message:"Update hub menu", content: b64utf8(jsonText()), branch:c.branch, ...(sha ? {sha} : {})})});
-    if (!p.ok){ const j = await p.json().catch(() => ({})); throw new Error(j.message || ("GitHub ตอบกลับ " + p.status)); }
-    MODULES = draft.map(m => ({...m})); dirty = false; applyLang();
-    msg.className = "msg ok"; msg.textContent = "✓ บันทึกแล้ว — ทุกคนจะเห็นเมนูใหม่ภายใน 1–2 นาที";
-  } catch(e){ msg.className = "msg bad"; msg.textContent = "บันทึกไม่ได้: " + e.message; }
+    if (mtab === "menu"){
+      msg.textContent = "กำลังบันทึก…";
+      await ghPut(c, "modules.json", b64utf8(jsonText()), "Update hub menu");
+      MODULES = draft.map(m => ({...m})); dirty = false; applyLang();
+    } else {
+      const ups = mdraft.filter(m => m._file); let n = 0;
+      for (const m of ups){
+        msg.textContent = `กำลังอัปโหลดไฟล์ ${++n}/${ups.length}: ${m._file.name}`;
+        const ext = (m._file.name.split(".").pop() || "bin").toLowerCase();
+        const stamp = new Date().toISOString().replace(/\D/g, "").slice(0, 12);
+        const base = slugify(m.title_en) || slugify(m.module) || slugify(m._file.name.replace(/\.[^.]+$/, "")) || "manual";
+        const path = `manuals/${base}-${stamp}.${ext}`;
+        if (m.src && !/^https?:/i.test(m.src)) pendingDel.push(m.src);
+        await ghPut(c, path, m._file.b64, `Add manual: ${m.title_th || m.title_en}`);
+        m.src = path; delete m._file;
+      }
+      msg.textContent = "กำลังบันทึกรายการคู่มือ…";
+      await ghPut(c, "manuals.json", b64utf8(manJsonText()), "Update manuals");
+      for (const p of [...new Set(pendingDel)]) if (!mdraft.some(m => m.src === p)) await ghDel(c, p);
+      pendingDel = [];
+      MANUALS = normManuals(mdraft); dirty = false; applyLang(); drawList();
+    }
+    $("saveMsg").className = "msg ok"; $("saveMsg").textContent = "✓ บันทึกแล้ว — ทุกคนจะเห็นภายใน 1–2 นาที";
+  } catch(e){ $("saveMsg").className = "msg bad"; $("saveMsg").textContent = "บันทึกไม่ได้: " + e.message; }
 }
 function downloadJson(){
   const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([jsonText()], {type:"application/json"})); a.download = "modules.json";
@@ -470,19 +687,25 @@ panel.addEventListener("click", e => {
   const ic = e.target.closest("[data-ic]");
   if (ic){ panel.querySelectorAll("#fIcons button").forEach(b => b.classList.toggle("on", b === ic)); return; }
   const b = e.target.closest("[data-a]"); if (!b) return;
-  const i = +b.dataset.i, a = b.dataset.a;
-  if (a === "up" || a === "down"){ const j = a === "up" ? i - 1 : i + 1; [draft[i], draft[j]] = [draft[j], draft[i]]; dirty = true; drawList(); }
-  else if (a === "del"){ if (b.dataset.sure){ draft.splice(i, 1); dirty = true; drawList(); } else { b.dataset.sure = "1"; b.textContent = "ลบ?"; b.style.width = "auto"; b.style.padding = "0 8px"; b.style.color = "var(--red)"; } }
+  const i = +b.dataset.i, a = b.dataset.a, L = mtab === "menu" ? draft : mdraft;
+  if (a === "tab"){ if (b.dataset.t2 !== mtab){ mtab = b.dataset.t2; drawList(); } }
+  else if (a === "up" || a === "down"){ const j = a === "up" ? i - 1 : i + 1; [L[i], L[j]] = [L[j], L[i]]; dirty = true; drawList(); }
+  else if (a === "del"){ if (b.dataset.sure){ const [x] = L.splice(i, 1); if (mtab === "man" && x.src && !/^https?:/i.test(x.src)) pendingDel.push(x.src); dirty = true; drawList(); } else { b.dataset.sure = "1"; b.textContent = "ลบ?"; b.style.width = "auto"; b.style.padding = "0 8px"; b.style.color = "var(--red)"; } }
   else if (a === "edit") drawForm(i);
   else if (a === "add") drawForm(null);
   else if (a === "back") drawList();
-  else if (a === "apply"){ const m = readForm(); if (typeof m === "string"){ $("formMsg").textContent = m; return; } if (editIdx == null) draft.push(m); else draft[editIdx] = m; dirty = true; drawList(); }
+  else if (a === "apply"){
+    const m = mtab === "menu" ? readForm() : readManForm();
+    if (typeof m === "string"){ $("formMsg").textContent = m; return; }
+    if (editIdx == null) L.push(m); else L[editIdx] = m; dirty = true; drawList();
+  }
   else if (a === "save") saveToGitHub();
   else if (a === "download") downloadJson();
   else if (a === "close") closeManager();
 });
 sheet.addEventListener("click", e => { if (e.target === sheet) closeManager(); });
-$("manage").onclick = openManager;
+$("manage").onclick = () => openManager("menu");
+$("manManage").onclick = () => openManager("man");
 
 /* ---------- events ---------- */
 document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => go(b.dataset.go));
@@ -491,12 +714,12 @@ $("back").onclick = () => go("home");
 $("logout").onclick = () => { store.del("afsRsm"); go("home"); };
 $("lang").onclick = e => { const b = e.target.closest("button"); if (!b) return; lang = b.dataset.l; store.set("afsLang", lang); applyLang(); };
 $("theme").onclick = () => { theme = theme === "dark" ? "light" : "dark"; store.set("afsTheme", theme); applyTheme(); };
-document.addEventListener("keydown", e => { if (e.key === "Escape"){ closeLock(); if (sheet.classList.contains("on")) closeManager(); } });
-window.addEventListener("hashchange", () => go(location.hash.slice(1) || "home"));
+document.addEventListener("keydown", e => { if (e.key === "Escape"){ closeLock(); if ($("viewer").classList.contains("on")) closeViewer(); if (sheet.classList.contains("on")) closeManager(); } });
+window.addEventListener("hashchange", () => { const h = location.hash.slice(1) || "home"; if (h !== view) go(h); });
 
 applyTheme(); applyLang();
-const h0 = location.hash.slice(1); if (h0 === "partner" || h0 === "rsm") go(h0);
-loadModules();
+const h0 = location.hash.slice(1); if (h0 === "partner" || h0 === "rsm" || h0 === "manuals") go(h0);
+loadModules().then(loadManuals);
 </script>
 
 </body>
