@@ -181,13 +181,82 @@ details.gh ol{margin:10px 0 0;padding-left:20px;color:var(--muted);font-size:13p
 .filebox{border:1.5px dashed var(--line);border-radius:12px;padding:14px;text-align:center;color:var(--muted);font-size:13.5px;cursor:pointer;background:var(--bg)}
 .filebox:hover{border-color:var(--red);color:var(--red)}
 .filebox b{color:var(--ink)}
+/* monthly tasks */
+.tcard{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--red);border-radius:16px;padding:14px 18px;margin:0 0 18px;box-shadow:var(--shadow)}
+.tcard-h{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.tcard ul{margin:8px 0 0;padding-left:20px;font-size:14px;line-height:1.7}
+.tsoon{margin-top:6px;font-size:12.5px;color:var(--muted)}
+.tnone{color:var(--muted);font-size:13.5px;margin:8px 0 0}
+.ttools{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.mnav{display:inline-flex;align-items:center;gap:4px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:3px}
+.mnav button{border:0;background:none;cursor:pointer;padding:6px 10px;border-radius:9px;font-size:14px;color:var(--ink)}
+.mnav button:hover{background:var(--red-soft);color:var(--red)}
+.mnav b{font-weight:500;font-size:14px;min-width:120px;text-align:center}
+#tRoleSeg{margin-bottom:18px}
+#tRoleSeg button{padding:8px 16px;font-size:13.5px}
+.tcols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:22px}
+.tbox{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:14px 16px;box-shadow:var(--shadow)}
+.tbox.today{border-top:3px solid var(--red)}
+.tbox h3,.tsech h3{margin:0 0 6px;font-size:15.5px;font-weight:600}
+.tsec{margin-bottom:26px}
+.tsech{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.tprog{font-size:13px;color:var(--muted)}
+.tlist{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:var(--shadow)}
+.tbox .trow{padding:10px 0}
+.trow{display:flex;gap:14px;align-items:flex-start;padding:12px 16px;border-bottom:1px solid var(--line)}
+.trow:last-child{border-bottom:0}
+.trow.now{background:color-mix(in srgb, var(--red) 5%, transparent)}
+.trow.done .ttitle{text-decoration:line-through;color:var(--muted)}
+.trow.past:not(.done) .tday b{color:var(--red)}
+.tday{flex:none;width:58px;text-align:center;border-radius:12px;background:var(--bg);padding:6px 4px;line-height:1.15}
+.tday b{display:block;font-size:17px;font-weight:600}
+.tday small{font-size:11px;color:var(--muted)}
+.tday.daily{font-size:12px;font-weight:500;color:var(--red);padding:10px 4px}
+.tmain{flex:1;min-width:0}
+.ttitle{font-weight:500;font-size:15px;line-height:1.45}
+.tmeta{display:flex;gap:6px 10px;flex-wrap:wrap;margin-top:4px;font-size:12.5px;color:var(--muted)}
+.tchip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:1px 9px;font-size:12px;color:var(--muted);background:var(--bg)}
+.tchip.ps{color:#1d4ed8;border-color:#bfdbfe}.tchip.rsm{color:var(--red);border-color:color-mix(in srgb, var(--red) 30%, var(--line))}
+.tlinks{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tlink{font-size:12.5px;text-decoration:none;color:var(--red);border:1px solid color-mix(in srgb, var(--red) 30%, var(--line));border-radius:9px;padding:4px 10px;background:var(--card)}
+.tlink:hover{background:var(--red);color:#fff}
+.tstate{display:inline-block;font-size:11px;font-weight:600;border-radius:999px;padding:1px 8px;margin-left:4px;vertical-align:middle}
+.tstate.now{background:var(--red);color:#fff}.tstate.late{background:#fde68a;color:#92400e}
+.tchk{flex:none;width:28px;display:flex;justify-content:center;padding-top:4px}
+.tchk input{display:none}
+.tchk span{width:22px;height:22px;border-radius:7px;border:1.6px solid var(--line);display:grid;place-items:center;cursor:pointer;background:var(--card)}
+.tchk input:checked + span{background:#16a34a;border-color:#16a34a}
+.tchk input:checked + span::after{content:"✓";color:#fff;font-size:14px;font-weight:700}
+.tcal{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin-bottom:12px}
+.tcal .th{text-align:center;font-size:12px;color:var(--muted);padding:2px 0}
+.tcal .cd{min-height:74px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:4px;display:flex;flex-direction:column;gap:2px;overflow:hidden}
+.tcal .cd.empty{background:none;border:0}
+.tcal .cd.sun{background:var(--bg)}
+.tcal .cd.today{border:2px solid var(--red)}
+.tcal .dn{font-size:12px;font-weight:600;color:var(--muted)}
+.tcal .today .dn{color:var(--red)}
+.tcal i{font-style:normal;font-size:10.5px;line-height:1.3;background:var(--red-soft);color:var(--red);border-radius:5px;padding:1px 4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tcal i.ok{background:#dcfce7;color:#15803d;text-decoration:line-through}
+.tcal i.more{background:none;color:var(--muted)}
+@media (max-width:760px){
+  .tcols{grid-template-columns:1fr}
+  .tcal .cd{min-height:44px}
+  .tcal i{font-size:0;height:5px;padding:0;border-radius:3px}
+  .tcal i.more{display:none}
+  .tday{width:50px}
+}
 .hide{display:none!important}
 @media (max-width:640px){
   .bookbtn span{display:none}
+  .ctrls{gap:4px;margin-left:auto}
+  .top .wrap{flex-wrap:wrap;row-gap:10px}
+  .iconbtn,.bookbtn{width:34px!important;height:34px}
+  .ctrls .seg button{padding:5px 8px}
+  .brand{gap:10px}
   .bookbtn{padding:0;width:38px;justify-content:center}
   .doors{grid-template-columns:1fr}
   .brand small{display:none}
-  .brand b{font-size:17px}
+  .brand b{font-size:15px}
   .logo{width:42px;height:42px;font-size:21px}
   .hero{padding-top:6vh}
 }
@@ -198,6 +267,7 @@ details.gh ol{margin:10px 0 0;padding-left:20px;color:var(--muted);font-size:13p
 <div class="top"><div class="wrap">
   <button class="brand" id="home"><div class="logo">G</div><div><b>GWM-AFS HUB</b><small data-t="tagline"></small></div></button>
   <div class="ctrls">
+    <button class="bookbtn" id="btnTasks" aria-label="Monthly tasks"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 9.5h16M9 3v4M15 3v4"/></svg><span data-t="tasks"></span></button>
     <button class="bookbtn" id="btnMan" aria-label="Manual"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6a3 3 0 0 1 3 3v14a2 2 0 0 0-2-2H4zM20 4h-6a3 3 0 0 0-3 3v14a2 2 0 0 1 2-2h7z"/></svg><span data-t="manuals"></span></button>
     <div class="seg" id="lang"><button data-l="th">TH</button><button data-l="en">EN</button></div>
     <button class="iconbtn" id="theme" aria-label="Day / Night"></button>
@@ -238,7 +308,26 @@ details.gh ol{margin:10px 0 0;padding-left:20px;color:var(--muted);font-size:13p
       <div class="pbtns"><button class="ghost hide" id="manage"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1A1.7 1.7 0 0 0 4.6 9a1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg><span data-t="manage"></span></button>
       <button class="ghost hide" id="logout"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9"/></svg><span data-t="logout"></span></button></div>
     </div>
+    <div id="todayCard"></div>
     <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="vTasks" class="wrap hide">
+    <div class="phead">
+      <div>
+        <button class="back" id="tBack">← <span data-t="back"></span></button>
+        <h1 id="tTitle"></h1>
+        <div class="sub" data-t="tasksSub"></div>
+      </div>
+      <div class="ttools">
+        <div class="mnav"><button id="tPrev" aria-label="prev">‹</button><b id="tMonth"></b><button id="tNext" aria-label="next">›</button></div>
+        <button class="ghost small" id="tToday" data-t="thisMonth"></button>
+        <button class="ghost small" id="tIcs">📆 <span data-t="addCal"></span></button>
+        <button class="ghost small hide" id="tManage">⚙️ <span data-t="manTasks"></span></button>
+      </div>
+    </div>
+    <div class="seg" id="tRoleSeg"></div>
+    <div id="tBody" style="padding-bottom:8vh"></div>
   </section>
 
   <section id="vMan" class="wrap hide">
@@ -306,11 +395,11 @@ const T = {
   th:{ tagline:"After-Sales Management", hero1:"ศูนย์รวมเครื่องมือ", hero2:"Aftersales - RSM", heroSub:"พื้นที่ทำงานกลางสำหรับงานบริการหลังการขาย GWM",
        partnerDesc:"สำหรับศูนย์บริการ (PS)", rsmDesc:"สำหรับ Regional Service Manager", needPw:"ต้องใส่รหัสผ่าน", enter:"เข้าสู่ระบบ", tools:n=>`${n} เครื่องมือ`,
        backHome:"หน้าแรก", logout:"ออกจากระบบ", manage:"จัดการเมนู", lockSub:"ใส่รหัสผ่าน RSM เพื่อเข้าใช้งาน", remember:"จำรหัสในเครื่องนี้", wrongPw:"รหัสผ่านไม่ถูกต้อง",
-       cancel:"ยกเลิก", open:"เปิดใช้งาน", manuals:"คู่มือ", howto:"วิธีใช้", manTitle:"คู่มือการใช้งาน", manSub:"วิธีใช้เครื่องมือแต่ละตัว — กดเพื่อเปิดอ่าน", manManage:"จัดการคู่มือ", back:"กลับ", all:"ทั้งหมด", general:"ทั่วไป", new:"ใหม่", noManual:"ยังไม่มีคู่มือ", openTab:"เปิดแท็บใหม่", pdfNote:"ถ้า PDF ไม่แสดงในมือถือ กด \"เปิดแท็บใหม่\" ด้านบน", soon:"เร็ว ๆ นี้", ready:n=>`${n} เครื่องมือพร้อมใช้งาน`, partnerWs:"Partner workspace", rsmWs:"Management workspace", both:"PS + RSM", rsmOnly:"RSM" },
+       cancel:"ยกเลิก", open:"เปิดใช้งาน", manuals:"คู่มือ", tasks:"งานประจำเดือน", tasksSub:"สิ่งที่ต้องทำในแต่ละเดือน — ติ๊ก ✓ เมื่อทำแล้ว (จำไว้ในเครื่องนี้)", thisMonth:"เดือนนี้", addCal:"เพิ่มลงปฏิทินของฉัน", manTasks:"จัดการงาน", howto:"วิธีใช้", manTitle:"คู่มือการใช้งาน", manSub:"วิธีใช้เครื่องมือแต่ละตัว — กดเพื่อเปิดอ่าน", manManage:"จัดการคู่มือ", back:"กลับ", all:"ทั้งหมด", general:"ทั่วไป", new:"ใหม่", noManual:"ยังไม่มีคู่มือ", openTab:"เปิดแท็บใหม่", pdfNote:"ถ้า PDF ไม่แสดงในมือถือ กด \"เปิดแท็บใหม่\" ด้านบน", soon:"เร็ว ๆ นี้", ready:n=>`${n} เครื่องมือพร้อมใช้งาน`, partnerWs:"Partner workspace", rsmWs:"Management workspace", both:"PS + RSM", rsmOnly:"RSM" },
   en:{ tagline:"After-Sales Management", hero1:"One Hub", hero2:"for AFS tools", heroSub:"Your central workspace for GWM after-sales operations.",
        partnerDesc:"Partner workspace for service centers", rsmDesc:"Management workspace for RSMs", needPw:"Password required", enter:"ENTER", tools:n=>`${n} tools`,
        backHome:"Home", logout:"Log out", manage:"Manage menu", lockSub:"Enter the RSM password to continue", remember:"Remember on this device", wrongPw:"Incorrect password",
-       cancel:"Cancel", open:"Open", manuals:"Manuals", howto:"How-to", manTitle:"User manuals", manSub:"How to use each tool — tap to open", manManage:"Manage manuals", back:"Back", all:"All", general:"General", new:"NEW", noManual:"No manuals yet", openTab:"Open in new tab", pdfNote:"If the PDF does not show on mobile, tap \"Open in new tab\" above", soon:"Coming soon", ready:n=>`${n} tools available`, partnerWs:"Partner workspace", rsmWs:"Management workspace", both:"PS + RSM", rsmOnly:"RSM" }
+       cancel:"Cancel", open:"Open", manuals:"Manuals", tasks:"Monthly tasks", tasksSub:"What to do each month — tick ✓ when done (saved on this device)", thisMonth:"This month", addCal:"Add to my calendar", manTasks:"Manage tasks", howto:"How-to", manTitle:"User manuals", manSub:"How to use each tool — tap to open", manManage:"Manage manuals", back:"Back", all:"All", general:"General", new:"NEW", noManual:"No manuals yet", openTab:"Open in new tab", pdfNote:"If the PDF does not show on mobile, tap \"Open in new tab\" above", soon:"Coming soon", ready:n=>`${n} tools available`, partnerWs:"Partner workspace", rsmWs:"Management workspace", both:"PS + RSM", rsmOnly:"RSM" }
 };
 const ICONS = {
   vor:'<path d="M5 17h14M6 17l1.5-5h9L18 17M7 12l1.2-4h7.6L17 12"/><circle cx="8" cy="17.5" r="1.6"/><circle cx="16" cy="17.5" r="1.6"/>',
@@ -377,6 +466,8 @@ function render(){
   $("vHome").classList.toggle("hide", view !== "home");
   $("vMods").classList.toggle("hide", view !== "partner" && view !== "rsm");
   $("vMan").classList.toggle("hide", view !== "manuals");
+  $("vTasks").classList.toggle("hide", view !== "tasks");
+  if (view === "tasks"){ renderTasks(); return; }
   if (view === "manuals"){ $("manManage").classList.toggle("hide", !canRsm()); renderManuals(); return; }
   if (view === "home") return;
   const isR = view === "rsm";
@@ -384,6 +475,7 @@ function render(){
   const list = MODULES.filter(m => m.roles.includes(view));
   $("pSub").textContent = `${isR ? t("rsmWs") : t("partnerWs")} · ${t("ready", list.filter(m => m.url).length)}`;
   $("logout").classList.toggle("hide", !isR);
+  $("todayCard").innerHTML = todayCard(view);
   $("manage").classList.toggle("hide", !isR);
   $("grid").innerHTML = list.map(m => {
     const tag = isR ? `<span class="tag">${m.roles.includes("partner") ? t("both") : t("rsmOnly")}</span>` : "";
@@ -396,7 +488,7 @@ function render(){
 let lastView = "home";
 function go(v){
   if (v === "rsm" && store.get("afsRsm") !== "1"){ openLock(); return; }
-  if (v === "manuals" && view !== "manuals") lastView = view;
+  if ((v === "manuals" || v === "tasks") && view !== v && view !== "manuals" && view !== "tasks") lastView = view;
   view = v; render(); window.scrollTo(0, 0);
   try { history.replaceState(null, "", v === "home" ? location.pathname + location.search : "#" + v); } catch(e){}
 }
@@ -493,12 +585,229 @@ $("grid").addEventListener("click", e => {
 $("btnMan").onclick = () => { manFilter = "__all"; go("manuals"); };
 $("manBack").onclick = () => go(lastView || "home");
 
+/* ---------- งานประจำเดือน (monthly tasks) ----------
+   เก็บใน tasks.json — แก้ผ่าน ⚙️ จัดการเมนู → แท็บ "งานประจำเดือน"
+   repeat: "monthly" = ช่วงวันที่ของทุกเดือน (from–to; 30/31 เลื่อนเป็นวันสุดท้ายของเดือนอัตโนมัติ)
+           "ongoing" = ทำทุกวัน (focus = วันในสัปดาห์ที่เน้น 0=อา … 6=ส)                         */
+const SP_SSOS = "https://gwmglobal.sharepoint.com/:f:/s/AftersalesDepartmentTH/IgDEdJd85EALRa7n1ZwicK9JAdoh_OrxrHV2xWyjM8F2ruQ?e=snIk8z";
+const DEFAULT_TASKS = [
+  {role:"ps", repeat:"monthly", from:3, to:7, short:"7 Days", title_th:"กรอกข้อมูล 7 Days ที่ RSM ส่งให้", note:"", channel:"", links:[]},
+  {role:"ps", repeat:"monthly", from:10, to:10, short:"SSOS", title_th:"Upload SSOS และรายงานการประชุม เข้า Share drive", note:"อ้างอิง Score card", channel:"", links:[]},
+  {role:"ps", repeat:"monthly", from:20, to:20, short:"น้ำมัน", title_th:"ตัดรอบรายการน้ำมัน", note:"", channel:"", links:[]},
+  {role:"ps", repeat:"monthly", from:25, to:25, short:"ตัดรอบอะไหล่", title_th:"ตัดรอบอะไหล่ (โดยประมาณ)", note:"อาจมีการเก็บตกหล่น เพื่อติดตาม Safety Stock", channel:"", links:[]},
+  {role:"ps", repeat:"monthly", from:25, to:25, short:"Action plan", title_th:"Upload ข้อมูล Action plan ลง Share drive", note:"", channel:"", links:[]},
+  {role:"ps", repeat:"monthly", from:30, to:30, short:"ส่งมอบ/CSI", title_th:"Upload รายงานส่งมอบรถใหม่ประจำเดือน, CSI และทุกรายการ", note:"", channel:"", links:[]},
+  {role:"ps", repeat:"ongoing", focus:[6], short:"VOR", title_th:"ติดตามสถานะรถค้างซ่อม VOR — อัปเดตทุกวันใน GCIP และ/หรือ Excel", note:"โดยเฉพาะเย็นวันเสาร์", channel:"", links:[{label:"VOR", url:"https://natchanontitle-cloud.github.io/VOR-GWM/"}]},
+
+  {role:"rsm", repeat:"monthly", from:1, to:7, short:"7 Days", title_th:"ติดตาม 7 Days จากฝ่ายอะไหล่ (สัปดาห์แรกของเดือน)", note:"", channel:'Ding "7 Days"', links:[{label:"7 Days", url:"https://natchanontitle-cloud.github.io/7days/"}]},
+  {role:"rsm", repeat:"monthly", from:3, to:7, short:"SSOS", title_th:"Upload SSOS หลังจากที่ทุกฝ่ายกรอกใน Nationwide", note:"", channel:"", links:[{label:"โฟลเดอร์ SSOS", url:SP_SSOS},{label:"Nationwide (Excel)", url:"https://gwmglobal.sharepoint.com/:x:/s/AftersalesDepartmentTH/IQCEzsrbUOUTRJNnFLOXCwJBAR10Lu5AcQJymTcSoiGlhyA?e=Y368EJ"}]},
+  {role:"rsm", repeat:"monthly", from:15, to:25, short:"Safety stock", title_th:"ติดตาม Safety stock จนถึงตัดรอบอะไหล่", note:"", channel:'Ding "SSOS"', links:[]},
+  {role:"rsm", repeat:"monthly", from:15, to:25, short:"Part target", title_th:"Follow up Spare part target จนถึงตัดรอบอะไหล่", note:"", channel:'Ding "Target / Target Part Sales"', links:[]},
+  {role:"rsm", repeat:"monthly", from:20, to:20, short:"น้ำมัน", title_th:"กำชับเรื่องการสั่งซื้อน้ำมัน", note:"", channel:"", links:[]},
+  {role:"rsm", repeat:"monthly", from:25, to:25, short:"SSOS", title_th:"Upload ไฟล์ SSOS ใน SharePoint เพื่อให้แผนกต่าง ๆ เข้ามากรอกข้อมูล", note:"", channel:"", links:[{label:"โฟลเดอร์ SSOS", url:SP_SSOS}]},
+  {role:"rsm", repeat:"monthly", from:26, to:28, short:"OA & Visit", title_th:"ยื่นขอ OA & Visit Plan", note:"", channel:"", links:[{label:"Workflow Center", url:"https://gwmglobal.sharepoint.com/sites/Asean/SitePages/WorkflowCenter.aspx/#/"},{label:"Visit plan", url:"https://gwmglobal.sharepoint.com/:f:/s/AftersalesDepartmentTH/IgDPXrS98NzjTKukH9p0supUAXsEcnqq-CdH1QNTTqkcbxQ?e=Qe2NYf"}]},
+  {role:"rsm", repeat:"monthly", from:28, to:28, short:"เบิกค่าเดินทาง", title_th:"ทำเบิกค่าเดินทาง", note:"", channel:"", links:[{label:"Expense Claim", url:"https://natchanontitle-cloud.github.io/GWM-expense/"}]},
+  {role:"rsm", repeat:"monthly", from:30, to:31, short:"OA HR", title_th:"ทำ OA ของ HR", note:"", channel:"", links:[]},
+  {role:"rsm", repeat:"ongoing", focus:[1], short:"VOR", title_th:"ติดตาม VOR ทุกวัน — อัปเดตสถานะทุกวันจันทร์", note:"", channel:"", links:[{label:"VOR SharePoint", url:"https://gwmglobal.sharepoint.com/:f:/s/AftersalesDepartmentTH/IgDV-NBw7pKGQ7DDuhPFieBhAX5wXO9vqerxOCgP81gBB2g?e=u3vMIM"},{label:"VOR", url:"https://natchanontitle-cloud.github.io/VOR-GWM/"}]},
+  {role:"rsm", repeat:"ongoing", focus:[], short:"Battery L3", title_th:"ติดตาม PS เรื่อง [After-Sales] Third-Level Warning of Power Battery", note:"", channel:"กลุ่ม Ding", links:[]}
+];
+let TASKS = DEFAULT_TASKS.map(x => ({...x}));
+let taskRole = null, taskMonth = null; // taskMonth = Date (1st of month)
+const DOW_TH = ["อา","จ","อ","พ","พฤ","ศ","ส"], DOW_EN = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const dowName = d => (lang === "en" ? DOW_EN : DOW_TH)[d];
+const ttl = x => (lang === "en" && x.title_en) ? x.title_en : x.title_th;
+function normTasks(list){
+  return (Array.isArray(list) ? list : []).map((x, i) => ({
+    id: x.id || ("t" + i + "_" + (x.short || "").replace(/\W+/g, "")),
+    role: x.role === "rsm" ? "rsm" : "ps", repeat: x.repeat === "ongoing" ? "ongoing" : "monthly",
+    from: Math.min(31, Math.max(1, +x.from || 1)), to: Math.min(31, Math.max(1, +x.to || +x.from || 1)),
+    focus: Array.isArray(x.focus) ? x.focus.map(Number).filter(n => n >= 0 && n <= 6) : [],
+    short: String(x.short || "").trim(), title_th: String(x.title_th || "").trim(), title_en: String(x.title_en || "").trim(),
+    note: String(x.note || "").trim(), channel: String(x.channel || "").trim(),
+    links: (Array.isArray(x.links) ? x.links : []).filter(l => l && l.url).map(l => ({label:String(l.label || "ลิงก์"), url:String(l.url)}))
+  })).filter(x => x.title_th || x.title_en);
+}
+TASKS = normTasks(TASKS);
+async function loadTasks(){
+  try { const r = await fetch("tasks.json?v=" + Date.now(), {cache:"no-store"}); if (r.ok){ const j = await r.json(); const l = normTasks(j.tasks || j); if (l.length) TASKS = l; } } catch(e){}
+  applyLang();
+}
+const lastDayOf = (y, m) => new Date(y, m + 1, 0).getDate();
+function span(x, y, m){ const L = lastDayOf(y, m); let a = Math.min(x.from, L), b = Math.min(Math.max(x.to, x.from), L); return [a, b]; }
+const mkey = d => `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}`;
+const doneKey = (x, d) => `afsDone:${mkey(d)}:${x.role}:${x.id}`;
+const isDone = (x, d) => { try { return localStorage.getItem(doneKey(x, d)) === "1"; } catch(e){ return false; } };
+function setDone(x, d, v){ try { v ? localStorage.setItem(doneKey(x, d), "1") : localStorage.removeItem(doneKey(x, d)); } catch(e){} }
+const tasksFor = role => TASKS.filter(x => x.role === role);
+function todayTasks(role){
+  const n = new Date(), y = n.getFullYear(), m = n.getMonth(), d = n.getDate(), w = n.getDay();
+  return tasksFor(role).filter(x => { if (x.repeat === "ongoing") return true; const [a,b] = span(x, y, m); return d >= a && d <= b; })
+    .map(x => ({x, focusToday: x.repeat === "ongoing" && x.focus.includes(w)}));
+}
+const rangeText = (a, b) => a === b ? `${a}` : `${a}–${b}`;
+function linkBtns(x){ return x.links.map(l => `<a class="tlink" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`).join(""); }
+function taskRow(x, ref, opts = {}){
+  const now = new Date(), cur = mkey(now) === mkey(ref);
+  let date, state = "";
+  if (x.repeat === "ongoing"){
+    date = `<span class="tday daily">${lang === "en" ? "Daily" : "ทุกวัน"}</span>`;
+  } else {
+    const [a,b] = span(x, ref.getFullYear(), ref.getMonth());
+    const da = new Date(ref.getFullYear(), ref.getMonth(), a).getDay(), db = new Date(ref.getFullYear(), ref.getMonth(), b).getDay();
+    date = `<span class="tday"><b>${rangeText(a,b)}</b><small>${a === b ? dowName(da) : dowName(da) + "–" + dowName(db)}</small></span>`;
+    if (cur){ const d = now.getDate(); if (d >= a && d <= b) state = "now"; else if (d > b) state = "past"; }
+  }
+  const done = x.repeat === "monthly" && isDone(x, ref);
+  const focus = x.repeat === "ongoing" && x.focus.length ? `<span class="tchip">${lang === "en" ? "Focus" : "เน้น"}: ${x.focus.map(dowName).join(", ")}</span>` : "";
+  const chk = x.repeat === "monthly" ? `<label class="tchk" title="${lang === "en" ? "Done" : "ทำแล้ว"}"><input type="checkbox" data-done="${esc(x.id)}" data-role="${x.role}" ${done ? "checked" : ""}><span></span></label>` : `<span class="tchk"></span>`;
+  const badge = state === "now" && !done ? `<span class="tstate now">${lang === "en" ? "Now" : "ช่วงนี้"}</span>` : (state === "past" && !done ? `<span class="tstate late">${lang === "en" ? "Overdue" : "เลยกำหนด"}</span>` : "");
+  const roleTag = opts.showRole ? `<span class="tchip ${x.role}">${x.role === "rsm" ? "RSM" : "PS"}</span>` : "";
+  return `<div class="trow ${done ? "done" : ""} ${state}">${date}<div class="tmain"><div class="ttitle">${esc(ttl(x))} ${badge}</div>
+    <div class="tmeta">${roleTag}${x.note ? `<span>${esc(x.note)}</span>` : ""}${x.channel ? `<span class="tchip">💬 ${esc(x.channel)}</span>` : ""}${focus}</div>
+    ${x.links.length ? `<div class="tlinks">${linkBtns(x)}</div>` : ""}</div>${chk}</div>`;
+}
+function renderTasks(){
+  const rsmOK = canRsm();
+  if (!taskRole || (taskRole === "rsm" && !rsmOK)) taskRole = rsmOK ? "rsm" : "ps";
+  if (!taskMonth){ const n = new Date(); taskMonth = new Date(n.getFullYear(), n.getMonth(), 1); }
+  const y = taskMonth.getFullYear(), m = taskMonth.getMonth(), L = lastDayOf(y, m), now = new Date(), cur = mkey(now) === mkey(taskMonth);
+  $("tRoleSeg").classList.toggle("hide", !rsmOK);
+  $("tRoleSeg").innerHTML = `<button data-tr="ps" class="${taskRole === "ps" ? "on" : ""}">GWM Partner (PS)</button><button data-tr="rsm" class="${taskRole === "rsm" ? "on" : ""}">GWM RSM</button>`;
+  $("tTitle").innerHTML = `${lang === "en" ? "Monthly tasks" : "งานประจำเดือน"} <span>${taskRole === "rsm" ? "RSM" : "PS"}</span>`;
+  $("tMonth").textContent = taskMonth.toLocaleDateString(lang === "en" ? "en-GB" : "th-TH", {month:"long", year:"numeric"});
+  $("tManage").classList.toggle("hide", !rsmOK);
+  const list = tasksFor(taskRole), monthly = list.filter(x => x.repeat === "monthly").sort((a,b) => a.from - b.from || a.to - b.to), ongoing = list.filter(x => x.repeat === "ongoing");
+  // today + upcoming
+  let top = "";
+  if (cur){
+    const d = now.getDate(), w = now.getDay();
+    const td = list.filter(x => { if (x.repeat === "ongoing") return true; const [a,b] = span(x, y, m); return d >= a && d <= b; });
+    const up = monthly.filter(x => { const [a] = span(x, y, m); return a > d && a <= d + 7; });
+    const nx = d + 7 > L ? (() => { const ny = m === 11 ? y + 1 : y, nm = (m + 1) % 12; return tasksFor(taskRole).filter(x => x.repeat === "monthly" && span(x, ny, nm)[0] <= d + 7 - L); })() : [];
+    top = `<div class="tcols"><div class="tbox today"><h3>🔴 ${lang === "en" ? "Today" : "วันนี้"} · ${dowName(w)} ${d}</h3>${td.map(x => taskRow(x, taskMonth)).join("") || `<p class="tnone">${lang === "en" ? "Nothing due today" : "ไม่มีงานที่ต้องส่งวันนี้"}</p>`}</div>
+      <div class="tbox"><h3>🟠 ${lang === "en" ? "Next 7 days" : "อีก 7 วันข้างหน้า"}</h3>${up.map(x => taskRow(x, taskMonth)).join("")}${nx.map(x => taskRow(x, new Date(m === 11 ? y + 1 : y, (m + 1) % 12, 1))).join("")}${!up.length && !nx.length ? `<p class="tnone">—</p>` : ""}</div></div>`;
+  }
+  // calendar grid
+  const first = new Date(y, m, 1).getDay();
+  let cal = `<div class="tcal">${[0,1,2,3,4,5,6].map(i => `<div class="th">${dowName(i)}</div>`).join("")}`;
+  for (let i = 0; i < first; i++) cal += `<div class="cd empty"></div>`;
+  for (let d = 1; d <= L; d++){
+    const its = monthly.filter(x => { const [a,b] = span(x, y, m); return d >= a && d <= b; });
+    const isT = cur && d === now.getDate(), dw = new Date(y, m, d).getDay();
+    cal += `<div class="cd ${isT ? "today" : ""} ${dw === 0 ? "sun" : ""}"><span class="dn">${d}</span>${its.slice(0, 3).map(x => `<i class="${isDone(x, taskMonth) ? "ok" : ""}" title="${esc(ttl(x))}">${esc(x.short || ttl(x))}</i>`).join("")}${its.length > 3 ? `<i class="more">+${its.length - 3}</i>` : ""}</div>`;
+  }
+  cal += `</div>`;
+  const doneN = monthly.filter(x => isDone(x, taskMonth)).length;
+  $("tBody").innerHTML = top +
+    `<div class="tsec"><div class="tsech"><h3>${lang === "en" ? "This month" : "ตลอดเดือน"} (${monthly.length})</h3><span class="tprog">${lang === "en" ? "Done" : "ทำแล้ว"} ${doneN}/${monthly.length}</span></div>${cal}<div class="tlist">${monthly.map(x => taskRow(x, taskMonth)).join("")}</div></div>` +
+    (ongoing.length ? `<div class="tsec"><div class="tsech"><h3>${lang === "en" ? "Every day" : "ทำเป็นประจำทุกวัน"}</h3></div><div class="tlist">${ongoing.map(x => taskRow(x, taskMonth)).join("")}</div></div>` : "") +
+    (taskRole === "rsm" ? `<div class="tsec"><div class="tsech"><h3>${lang === "en" ? "What PS must do this month" : "สิ่งที่ PS ต้องทำเดือนนี้"}</h3><button class="ghost small" data-tr="ps">${lang === "en" ? "View PS calendar" : "ดูปฏิทินของ PS"} →</button></div><div class="tlist">${tasksFor("ps").filter(x => x.repeat === "monthly").sort((a,b) => a.from - b.from).map(x => taskRow(x, taskMonth)).join("")}</div></div>` : "");
+}
+function todayCard(role){
+  const r = role === "rsm" ? "rsm" : "ps", n = new Date();
+  const its = todayTasks(r).filter(o => o.x.repeat === "monthly" || o.focusToday);
+  const up = tasksFor(r).filter(x => x.repeat === "monthly" && (() => { const [a] = span(x, n.getFullYear(), n.getMonth()); return a > n.getDate() && a <= n.getDate() + 3; })());
+  const line = o => `<li>${esc(ttl(o.x || o))}${o.focusToday ? ` <span class="tstate now">${lang === "en" ? "today" : "วันนี้"}</span>` : ""}</li>`;
+  return `<div class="tcard"><div class="tcard-h"><b>📅 ${lang === "en" ? "Today's tasks" : "งานของวันนี้"}</b><button class="ghost small" id="openTasks">${lang === "en" ? "Monthly calendar" : "ดูงานทั้งเดือน"} →</button></div>
+    ${its.length ? `<ul>${its.slice(0, 4).map(line).join("")}</ul>` : `<p class="tnone">${lang === "en" ? "Nothing due today" : "วันนี้ไม่มีงานที่ต้องส่ง"}</p>`}
+    ${up.length ? `<div class="tsoon">${lang === "en" ? "Coming up" : "เร็ว ๆ นี้"}: ${up.map(x => `${span(x, n.getFullYear(), n.getMonth())[0]} — ${esc(x.short || ttl(x))}`).join(" · ")}</div>` : ""}</div>`;
+}
+/* .ics export — 12 months of events + weekly focus days */
+function icsEscape(s){ return String(s).replace(/\\/g, "\\\\").replace(/;/g, "\\;").replace(/,/g, "\\,").replace(/\n/g, "\\n"); }
+function icsDate(d){ return `${d.getFullYear()}${String(d.getMonth()+1).padStart(2,"0")}${String(d.getDate()).padStart(2,"0")}`; }
+function buildICS(role){
+  const L = ["BEGIN:VCALENDAR","VERSION:2.0","PRODID:-//GWM-AFS HUB//TH","CALSCALE:GREGORIAN",`X-WR-CALNAME:GWM ${role === "rsm" ? "RSM" : "PS"} งานประจำเดือน`];
+  const stamp = new Date().toISOString().replace(/[-:]/g, "").slice(0, 15) + "Z", n = new Date();
+  const desc = x => icsEscape([x.note, x.channel && ("ช่องทาง: " + x.channel), ...x.links.map(l => `${l.label}: ${l.url}`), "จาก GWM-AFS HUB"].filter(Boolean).join("\n"));
+  const alarm = ["BEGIN:VALARM","ACTION:DISPLAY","DESCRIPTION:GWM งานประจำเดือน","TRIGGER:-PT15H","END:VALARM"];
+  for (const x of tasksFor(role)){
+    if (x.repeat === "monthly"){
+      for (let k = 0; k < 12; k++){
+        const y = n.getFullYear() + Math.floor((n.getMonth() + k) / 12), m = (n.getMonth() + k) % 12, [a,b] = span(x, y, m);
+        const s = new Date(y, m, a), e = new Date(y, m, b + 1);
+        L.push("BEGIN:VEVENT", `UID:${x.role}-${x.id}-${y}${m}@afs-hub`, `DTSTAMP:${stamp}`, `DTSTART;VALUE=DATE:${icsDate(s)}`, `DTEND;VALUE=DATE:${icsDate(e)}`,
+               `SUMMARY:${icsEscape((role === "rsm" ? "[RSM] " : "[PS] ") + ttl(x))}`, `DESCRIPTION:${desc(x)}`, ...alarm, "END:VEVENT");
+      }
+    } else if (x.focus.length){
+      const BY = ["SU","MO","TU","WE","TH","FR","SA"];
+      const s = new Date(n); while (!x.focus.includes(s.getDay())) s.setDate(s.getDate() + 1);
+      const e = new Date(s); e.setDate(e.getDate() + 1);
+      L.push("BEGIN:VEVENT", `UID:${x.role}-${x.id}-weekly@afs-hub`, `DTSTAMP:${stamp}`, `DTSTART;VALUE=DATE:${icsDate(s)}`, `DTEND;VALUE=DATE:${icsDate(e)}`,
+             `RRULE:FREQ=WEEKLY;BYDAY=${x.focus.map(i => BY[i]).join(",")}`, `SUMMARY:${icsEscape((role === "rsm" ? "[RSM] " : "[PS] ") + ttl(x))}`, `DESCRIPTION:${desc(x)}`, "END:VEVENT");
+    }
+  }
+  L.push("END:VCALENDAR");
+  return L.join("\r\n");
+}
+function downloadICS(){
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([buildICS(taskRole)], {type:"text/calendar"}));
+  a.download = `GWM-${taskRole === "rsm" ? "RSM" : "PS"}-monthly-tasks.ics`; document.body.appendChild(a); a.click(); a.remove();
+  toast(lang === "en" ? "Calendar file downloaded — open it to add to Outlook / Google Calendar" : "ดาวน์โหลดแล้ว — เปิดไฟล์เพื่อเพิ่มลง Outlook / Google Calendar / ปฏิทินมือถือ", 5000);
+}
+$("tBody").addEventListener("change", e => { const c = e.target.closest("[data-done]"); if (!c) return; const x = TASKS.find(t => t.id === c.dataset.done && t.role === c.dataset.role); if (x){ setDone(x, taskMonth, c.checked); renderTasks(); } });
+$("vTasks").addEventListener("click", e => { const b = e.target.closest("[data-tr]"); if (b){ taskRole = b.dataset.tr; renderTasks(); window.scrollTo(0, 0); } });
+$("tPrev").onclick = () => { taskMonth = new Date(taskMonth.getFullYear(), taskMonth.getMonth() - 1, 1); renderTasks(); };
+$("tNext").onclick = () => { taskMonth = new Date(taskMonth.getFullYear(), taskMonth.getMonth() + 1, 1); renderTasks(); };
+$("tToday").onclick = () => { taskMonth = null; renderTasks(); };
+$("tIcs").onclick = downloadICS;
+$("tBack").onclick = () => go(lastView && lastView !== "tasks" ? lastView : "home");
+$("btnTasks").onclick = () => { taskRole = view === "rsm" ? "rsm" : (view === "partner" ? "ps" : null); go("tasks"); };
+$("todayCard").addEventListener("click", e => { if (e.target.closest("#openTasks")){ taskRole = view === "rsm" ? "rsm" : "ps"; go("tasks"); } });
+
 /* ---------- manager (RSM only): menus + manuals ---------- */
 let draft = null, mdraft = null, editIdx = null, dirty = false, mtab = "menu", pendingDel = [];
+/* ---------- manager: tasks tab ---------- */
+let tdraft = null;
+const DOWS = ["อา","จ","อ","พ","พฤ","ศ","ส"];
+function taskListHTML(){
+  const row = (x, i) => `<div class="mrow"><div class="mi" style="font-size:12px;font-weight:600">${x.repeat === "ongoing" ? "ทุกวัน" : rangeText(x.from, x.to)}</div>
+    <div class="tx"><b>${esc(x.title_th || x.title_en)}</b><small>${x.role === "rsm" ? "RSM" : "PS"}${x.short ? " · " + esc(x.short) : ""}${x.links.length ? " · ลิงก์ " + x.links.length : ""}</small></div>${rowActs(i, tdraft.length)}</div>`;
+  return `<h2>จัดการงานประจำเดือน</h2>
+    <p class="hint">งานรายเดือนใส่ช่วงวันที่ (ถ้าเดือนนั้นไม่มีวันที่ 30/31 ระบบเลื่อนเป็นวันสุดท้ายของเดือนให้เอง) · งานที่ทำทุกวันเลือก "ทุกวัน"</p>
+    <div class="mlist">${tdraft.map(row).join("") || `<p class="hint">ยังไม่มีงาน</p>`}</div>
+    <button class="ghost small" data-a="add" style="margin-top:12px">＋ เพิ่มงาน</button>`;
+}
+function drawTaskForm(i){
+  const x = i == null ? {role:"ps", repeat:"monthly", from:1, to:1, focus:[], short:"", title_th:"", title_en:"", note:"", channel:"", links:[]} : tdraft[i];
+  const days = Array.from({length:31}, (_, k) => k + 1);
+  panel.innerHTML = `
+    <h2>${i == null ? "เพิ่มงาน" : "แก้ไขงาน"}</h2>
+    <div class="form">
+      <label>ของใคร<select id="kRole"><option value="ps" ${x.role === "ps" ? "selected" : ""}>GWM Partner (PS)</option><option value="rsm" ${x.role === "rsm" ? "selected" : ""}>GWM RSM</option></select></label>
+      <label>รอบงาน<select id="kRep"><option value="monthly" ${x.repeat === "monthly" ? "selected" : ""}>ทุกเดือน (ช่วงวันที่)</option><option value="ongoing" ${x.repeat === "ongoing" ? "selected" : ""}>ทำทุกวัน</option></select></label>
+      <label class="kM">ตั้งแต่วันที่<select id="kFrom">${days.map(d => `<option ${d === x.from ? "selected" : ""}>${d}</option>`).join("")}</select></label>
+      <label class="kM">ถึงวันที่<select id="kTo">${days.map(d => `<option ${d === x.to ? "selected" : ""}>${d}</option>`).join("")}</select></label>
+      <label class="full kO">วันที่เน้นเป็นพิเศษ (ไม่บังคับ)<div class="chk">${DOWS.map((n, k) => `<span><input type="checkbox" class="kF" value="${k}" ${x.focus.includes(k) ? "checked" : ""}> ${n}</span>`).join("")}</div></label>
+      <label class="full">ชื่องาน (TH) *<input type="text" id="kTh" value="${esc(x.title_th)}" placeholder="เช่น Upload SSOS เข้า Share drive"></label>
+      <label>ชื่องาน (EN)<input type="text" id="kEn" value="${esc(x.title_en)}"></label>
+      <label>ชื่อสั้นบนปฏิทิน<input type="text" id="kShort" value="${esc(x.short)}" placeholder="เช่น SSOS"></label>
+      <label class="full">หมายเหตุ<input type="text" id="kNote" value="${esc(x.note)}"></label>
+      <label class="full">ช่องทาง / กลุ่ม<input type="text" id="kCh" value="${esc(x.channel)}" placeholder='เช่น Ding "SSOS"'></label>
+      <label class="full">ลิงก์ (บรรทัดละ 1 ลิงก์: ชื่อ | URL)<textarea id="kLinks" rows="3" style="font:inherit;font-size:14px;padding:10px 12px;border-radius:11px;border:1px solid var(--line);background:var(--bg);color:var(--ink)" placeholder="โฟลเดอร์ SSOS | https://…">${esc(x.links.map(l => `${l.label} | ${l.url}`).join("\n"))}</textarea></label>
+    </div>
+    <div class="msg bad" id="formMsg"></div>
+    <div class="bar"><button class="ghost small" data-a="back">← กลับ</button><button class="enter small" data-a="apply">ตกลง</button></div>`;
+  const sync = () => { const on = $("kRep").value === "monthly"; panel.querySelectorAll(".kM").forEach(e => e.classList.toggle("hide", !on)); panel.querySelector(".kO").classList.toggle("hide", on); };
+  $("kRep").onchange = sync; sync();
+}
+function readTaskForm(){
+  const old = editIdx == null ? null : tdraft[editIdx];
+  const x = { id: old ? old.id : "t" + Date.now().toString(36), role:$("kRole").value, repeat:$("kRep").value,
+    from:+$("kFrom").value, to:+$("kTo").value, focus:[...panel.querySelectorAll(".kF:checked")].map(c => +c.value),
+    title_th:$("kTh").value.trim(), title_en:$("kEn").value.trim(), short:$("kShort").value.trim(), note:$("kNote").value.trim(), channel:$("kCh").value.trim(),
+    links:$("kLinks").value.split("\n").map(s => s.trim()).filter(Boolean).map(s => { const p = s.split("|"); const url = (p.length > 1 ? p.slice(1).join("|") : p[0]).trim(); return {label:(p.length > 1 ? p[0].trim() : "ลิงก์") || "ลิงก์", url:/^https?:\/\//i.test(url) ? url : "https://" + url}; }) };
+  if (!x.title_th && !x.title_en) return "ใส่ชื่องานก่อน";
+  if (x.repeat === "monthly" && x.to < x.from) return "วันที่สิ้นสุดต้องไม่ก่อนวันที่เริ่ม";
+  if (x.repeat === "monthly") x.focus = [];
+  return x;
+}
+const taskJsonText = () => JSON.stringify({ updated:new Date().toISOString(), tasks:tdraft }, null, 2) + "\n";
+
 const sheet = $("sheet"), panel = $("panel");
 function openManager(tab){
   draft = MODULES.map(m => ({...m, roles:[...m.roles]}));
   mdraft = MANUALS.map(m => ({...m, roles:[...m.roles]}));
+  tdraft = TASKS.map(x => ({...x, focus:[...x.focus], links:x.links.map(l => ({...l}))}));
   pendingDel = []; dirty = false; mtab = tab || "menu"; drawList(); sheet.classList.add("on");
 }
 function closeManager(){
@@ -527,7 +836,7 @@ const rowActs = (i, n) => `<div class="acts">
   <button class="sq" data-a="edit" data-i="${i}" title="แก้ไข">✎</button>
   <button class="sq" data-a="del" data-i="${i}" title="ลบ">✕</button></div>`;
 function drawList(){
-  const tabs = `<div class="tabs2"><button data-a="tab" data-t2="menu" class="${mtab === "menu" ? "on" : ""}">เมนู</button><button data-a="tab" data-t2="man" class="${mtab === "man" ? "on" : ""}">📘 คู่มือ</button></div>`;
+  const tabs = `<div class="tabs2"><button data-a="tab" data-t2="menu" class="${mtab === "menu" ? "on" : ""}">เมนู</button><button data-a="tab" data-t2="man" class="${mtab === "man" ? "on" : ""}">📘 คู่มือ</button><button data-a="tab" data-t2="task" class="${mtab === "task" ? "on" : ""}">📅 งานประจำเดือน</button></div>`;
   let body;
   if (mtab === "menu"){
     body = `<h2>จัดการเมนู</h2>
@@ -535,6 +844,8 @@ function drawList(){
       <div class="mlist">${draft.map((m, i) => `<div class="mrow"><div class="mi">${svg(m.icon)}</div>
         <div class="tx"><b>${esc(m.name_th || m.name_en)}</b><small>${m.roles.includes("partner") ? "PS + RSM" : "RSM"} · ${m.url ? esc(m.url.replace(/^https?:\/\//, "")) : "เร็ว ๆ นี้"}</small></div>${rowActs(i, draft.length)}</div>`).join("")}</div>
       <button class="ghost small" data-a="add" style="margin-top:12px">＋ เพิ่มเมนูใหม่</button>`;
+  } else if (mtab === "task"){
+    body = taskListHTML();
   } else {
     body = `<h2>จัดการคู่มือ</h2>
       <p class="hint">แนบไฟล์ HTML, PDF หรือรูป (ไม่เกิน 20 MB) หรือใส่ลิงก์ (เช่น YouTube / Google Drive) แล้วกด "บันทึกขึ้นเว็บ"</p>
@@ -548,6 +859,7 @@ function drawList(){
 function drawForm(i){
   editIdx = i;
   if (mtab === "man") return drawManForm(i);
+  if (mtab === "task") return drawTaskForm(i);
   const m = i == null ? {name_th:"", name_en:"", desc_th:"", desc_en:"", url:"", icon:"link", roles:["rsm"]} : draft[i];
   panel.innerHTML = `
     <h2>${i == null ? "เพิ่มเมนูใหม่" : "แก้ไขเมนู"}</h2>
@@ -652,7 +964,11 @@ async function saveToGitHub(){
   if (!c.token){ msg.className = "msg bad"; msg.textContent = "ใส่ GitHub token ก่อน (ดูวิธีในกล่องตั้งค่า)"; panel.querySelector("details.gh").open = true; return; }
   msg.className = "msg";
   try {
-    if (mtab === "menu"){
+    if (mtab === "task"){
+      msg.textContent = "กำลังบันทึก…";
+      await ghPut(c, "tasks.json", b64utf8(taskJsonText()), "Update monthly tasks");
+      TASKS = normTasks(tdraft); dirty = false; applyLang();
+    } else if (mtab === "menu"){
       msg.textContent = "กำลังบันทึก…";
       await ghPut(c, "modules.json", b64utf8(jsonText()), "Update hub menu");
       MODULES = draft.map(m => ({...m})); dirty = false; applyLang();
@@ -687,7 +1003,7 @@ panel.addEventListener("click", e => {
   const ic = e.target.closest("[data-ic]");
   if (ic){ panel.querySelectorAll("#fIcons button").forEach(b => b.classList.toggle("on", b === ic)); return; }
   const b = e.target.closest("[data-a]"); if (!b) return;
-  const i = +b.dataset.i, a = b.dataset.a, L = mtab === "menu" ? draft : mdraft;
+  const i = +b.dataset.i, a = b.dataset.a, L = mtab === "menu" ? draft : (mtab === "task" ? tdraft : mdraft);
   if (a === "tab"){ if (b.dataset.t2 !== mtab){ mtab = b.dataset.t2; drawList(); } }
   else if (a === "up" || a === "down"){ const j = a === "up" ? i - 1 : i + 1; [L[i], L[j]] = [L[j], L[i]]; dirty = true; drawList(); }
   else if (a === "del"){ if (b.dataset.sure){ const [x] = L.splice(i, 1); if (mtab === "man" && x.src && !/^https?:/i.test(x.src)) pendingDel.push(x.src); dirty = true; drawList(); } else { b.dataset.sure = "1"; b.textContent = "ลบ?"; b.style.width = "auto"; b.style.padding = "0 8px"; b.style.color = "var(--red)"; } }
@@ -695,7 +1011,7 @@ panel.addEventListener("click", e => {
   else if (a === "add") drawForm(null);
   else if (a === "back") drawList();
   else if (a === "apply"){
-    const m = mtab === "menu" ? readForm() : readManForm();
+    const m = mtab === "menu" ? readForm() : (mtab === "task" ? readTaskForm() : readManForm());
     if (typeof m === "string"){ $("formMsg").textContent = m; return; }
     if (editIdx == null) L.push(m); else L[editIdx] = m; dirty = true; drawList();
   }
@@ -706,6 +1022,7 @@ panel.addEventListener("click", e => {
 sheet.addEventListener("click", e => { if (e.target === sheet) closeManager(); });
 $("manage").onclick = () => openManager("menu");
 $("manManage").onclick = () => openManager("man");
+$("tManage").onclick = () => openManager("task");
 
 /* ---------- events ---------- */
 document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => go(b.dataset.go));
@@ -718,8 +1035,8 @@ document.addEventListener("keydown", e => { if (e.key === "Escape"){ closeLock()
 window.addEventListener("hashchange", () => { const h = location.hash.slice(1) || "home"; if (h !== view) go(h); });
 
 applyTheme(); applyLang();
-const h0 = location.hash.slice(1); if (h0 === "partner" || h0 === "rsm" || h0 === "manuals") go(h0);
-loadModules().then(loadManuals);
+const h0 = location.hash.slice(1); if (["partner","rsm","manuals","tasks"].includes(h0)) go(h0);
+loadModules().then(loadManuals).then(loadTasks);
 </script>
 
 </body>
