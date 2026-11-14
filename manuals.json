@@ -1,0 +1,17 @@
+{
+  "updated": "2026-11-14T04:44:53.669Z",
+  "manuals": [
+    {
+      "title_th": "คู่มือ ตรวจเช็คตารางนัดหมาย",
+      "title_en": "Manual_Time slot - Check",
+      "module": "",
+      "roles": [
+        "partner",
+        "rsm"
+      ],
+      "added": "2026-11-14",
+      "kind": "html",
+      "src": "manuals/manual_time-slot---check-202611140444.html"
+    }
+  ]
+}
