@@ -1,0 +1,308 @@
+{
+  "updated": "2026-11-14T07:19:43.939Z",
+  "tasks": [
+    {
+      "id": "t0_7Days",
+      "role": "ps",
+      "repeat": "monthly",
+      "from": 9,
+      "to": 11,
+      "focus": [],
+      "title_th": "กรอกข้อมูล 7 Days ที่ RSM ส่งให้",
+      "title_en": "",
+      "short": "7 Days",
+      "note": "",
+      "channel": "",
+      "links": []
+    },
+    {
+      "id": "t1_SSOS",
+      "role": "ps",
+      "repeat": "monthly",
+      "from": 10,
+      "to": 10,
+      "focus": [],
+      "short": "SSOS",
+      "title_th": "Upload SSOS และรายงานการประชุม เข้า Share drive",
+      "title_en": "",
+      "note": "อ้างอิง Score card",
+      "channel": "",
+      "links": []
+    },
+    {
+      "id": "t2_",
+      "role": "ps",
+      "repeat": "monthly",
+      "from": 20,
+      "to": 20,
+      "focus": [],
+      "short": "น้ำมัน",
+      "title_th": "ตัดรอบรายการน้ำมัน",
+      "title_en": "",
+      "note": "",
+      "channel": "",
+      "links": []
+    },
+    {
+      "id": "t3_",
+      "role": "ps",
+      "repeat": "monthly",
+      "from": 25,
+      "to": 25,
+      "focus": [],
+      "short": "ตัดรอบอะไหล่",
+      "title_th": "ตัดรอบอะไหล่ (โดยประมาณ)",
+      "title_en": "",
+      "note": "อาจมีการเก็บตกหล่น เพื่อติดตาม Safety Stock",
+      "channel": "",
+      "links": []
+    },
+    {
+      "id": "t4_Actionplan",
+      "role": "ps",
+      "repeat": "monthly",
+      "from": 25,
+      "to": 25,
+      "focus": [],
+      "short": "Action plan",
+      "title_th": "Upload ข้อมูล Action plan ลง Share drive",
+      "title_en": "",
+      "note": "",
+      "channel": "",
+      "links": []
+    },
+    {
+      "id": "t5_CSI",
+      "role": "ps",
+      "repeat": "monthly",
+      "from": 30,
+      "to": 30,
+      "focus": [],
+      "short": "ส่งมอบ/CSI",
+      "title_th": "Upload รายงานส่งมอบรถใหม่ประจำเดือน, CSI และทุกรายการ",
+      "title_en": "",
+      "note": "",
+      "channel": "",
+      "links": []
+    },
+    {
+      "id": "t6_VOR",
+      "role": "ps",
+      "repeat": "ongoing",
+      "from": 1,
+      "to": 1,
+      "focus": [
+        6
+      ],
+      "short": "VOR",
+      "title_th": "ติดตามสถานะรถค้างซ่อม VOR — อัปเดตทุกวันใน GCIP และ/หรือ Excel",
+      "title_en": "",
+      "note": "โดยเฉพาะเย็นวันเสาร์",
+      "channel": "",
+      "links": [
+        {
+          "label": "VOR",
+          "url": "https://natchanontitle-cloud.github.io/VOR-GWM/"
+        }
+      ]
+    },
+    {
+      "id": "t7_7Days",
+      "role": "rsm",
+      "repeat": "monthly",
+      "from": 1,
+      "to": 7,
+      "focus": [],
+      "short": "7 Days",
+      "title_th": "ติดตาม 7 Days จากฝ่ายอะไหล่ (สัปดาห์แรกของเดือน)",
+      "title_en": "",
+      "note": "",
+      "channel": "Ding \"7 Days\"",
+      "links": [
+        {
+          "label": "7 Days",
+          "url": "https://natchanontitle-cloud.github.io/7days/"
+        }
+      ]
+    },
+    {
+      "id": "t8_SSOS",
+      "role": "rsm",
+      "repeat": "monthly",
+      "from": 3,
+      "to": 7,
+      "focus": [],
+      "short": "SSOS",
+      "title_th": "Upload SSOS หลังจากที่ทุกฝ่ายกรอกใน Nationwide",
+      "title_en": "",
+      "note": "",
+      "channel": "",
+      "links": [
+        {
+          "label": "โฟลเดอร์ SSOS",
+          "url": "https://gwmglobal.sharepoint.com/:f:/s/AftersalesDepartmentTH/IgDEdJd85EALRa7n1ZwicK9JAdoh_OrxrHV2xWyjM8F2ruQ?e=snIk8z"
+        },
+        {
+          "label": "Nationwide (Excel)",
+          "url": "https://gwmglobal.sharepoint.com/:x:/s/AftersalesDepartmentTH/IQCEzsrbUOUTRJNnFLOXCwJBAR10Lu5AcQJymTcSoiGlhyA?e=Y368EJ"
+        }
+      ]
+    },
+    {
+      "id": "t9_Safetystock",
+      "role": "rsm",
+      "repeat": "monthly",
+      "from": 15,
+      "to": 25,
+      "focus": [],
+      "short": "Safety stock",
+      "title_th": "ติดตาม Safety stock จนถึงตัดรอบอะไหล่",
+      "title_en": "",
+      "note": "",
+      "channel": "Ding \"SSOS\"",
+      "links": []
+    },
+    {
+      "id": "t10_Parttarget",
+      "role": "rsm",
+      "repeat": "monthly",
+      "from": 15,
+      "to": 25,
+      "focus": [],
+      "short": "Part target",
+      "title_th": "Follow up Spare part target จนถึงตัดรอบอะไหล่",
+      "title_en": "",
+      "note": "",
+      "channel": "Ding \"Target / Target Part Sales\"",
+      "links": []
+    },
+    {
+      "id": "t11_",
+      "role": "rsm",
+      "repeat": "monthly",
+      "from": 20,
+      "to": 20,
+      "focus": [],
+      "short": "น้ำมัน",
+      "title_th": "กำชับเรื่องการสั่งซื้อน้ำมัน",
+      "title_en": "",
+      "note": "",
+      "channel": "",
+      "links": []
+    },
+    {
+      "id": "t12_SSOS",
+      "role": "rsm",
+      "repeat": "monthly",
+      "from": 25,
+      "to": 25,
+      "focus": [],
+      "short": "SSOS",
+      "title_th": "Upload ไฟล์ SSOS ใน SharePoint เพื่อให้แผนกต่าง ๆ เข้ามากรอกข้อมูล",
+      "title_en": "",
+      "note": "",
+      "channel": "",
+      "links": [
+        {
+          "label": "โฟลเดอร์ SSOS",
+          "url": "https://gwmglobal.sharepoint.com/:f:/s/AftersalesDepartmentTH/IgDEdJd85EALRa7n1ZwicK9JAdoh_OrxrHV2xWyjM8F2ruQ?e=snIk8z"
+        }
+      ]
+    },
+    {
+      "id": "t13_OAVisit",
+      "role": "rsm",
+      "repeat": "monthly",
+      "from": 26,
+      "to": 28,
+      "focus": [],
+      "short": "OA & Visit",
+      "title_th": "ยื่นขอ OA & Visit Plan",
+      "title_en": "",
+      "note": "",
+      "channel": "",
+      "links": [
+        {
+          "label": "Workflow Center",
+          "url": "https://gwmglobal.sharepoint.com/sites/Asean/SitePages/WorkflowCenter.aspx/#/"
+        },
+        {
+          "label": "Visit plan",
+          "url": "https://gwmglobal.sharepoint.com/:f:/s/AftersalesDepartmentTH/IgDPXrS98NzjTKukH9p0supUAXsEcnqq-CdH1QNTTqkcbxQ?e=Qe2NYf"
+        }
+      ]
+    },
+    {
+      "id": "t14_",
+      "role": "rsm",
+      "repeat": "monthly",
+      "from": 28,
+      "to": 28,
+      "focus": [],
+      "short": "เบิกค่าเดินทาง",
+      "title_th": "ทำเบิกค่าเดินทาง",
+      "title_en": "",
+      "note": "",
+      "channel": "",
+      "links": [
+        {
+          "label": "Expense Claim",
+          "url": "https://natchanontitle-cloud.github.io/GWM-expense/"
+        }
+      ]
+    },
+    {
+      "id": "t15_OAHR",
+      "role": "rsm",
+      "repeat": "monthly",
+      "from": 30,
+      "to": 31,
+      "focus": [],
+      "short": "OA HR",
+      "title_th": "ทำ OA ของ HR",
+      "title_en": "",
+      "note": "",
+      "channel": "",
+      "links": []
+    },
+    {
+      "id": "t16_VOR",
+      "role": "rsm",
+      "repeat": "ongoing",
+      "from": 1,
+      "to": 1,
+      "focus": [
+        1
+      ],
+      "short": "VOR",
+      "title_th": "ติดตาม VOR ทุกวัน — อัปเดตสถานะทุกวันจันทร์",
+      "title_en": "",
+      "note": "",
+      "channel": "",
+      "links": [
+        {
+          "label": "VOR SharePoint",
+          "url": "https://gwmglobal.sharepoint.com/:f:/s/AftersalesDepartmentTH/IgDV-NBw7pKGQ7DDuhPFieBhAX5wXO9vqerxOCgP81gBB2g?e=u3vMIM"
+        },
+        {
+          "label": "VOR",
+          "url": "https://natchanontitle-cloud.github.io/VOR-GWM/"
+        }
+      ]
+    },
+    {
+      "id": "t17_BatteryL3",
+      "role": "rsm",
+      "repeat": "ongoing",
+      "from": 1,
+      "to": 1,
+      "focus": [],
+      "short": "Battery L3",
+      "title_th": "ติดตาม PS เรื่อง [After-Sales] Third-Level Warning of Power Battery",
+      "title_en": "",
+      "note": "",
+      "channel": "กลุ่ม Ding",
+      "links": []
+    }
+  ]
+}
