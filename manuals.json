@@ -1,9 +1,9 @@
 {
-  "updated": "2026-11-14T04:44:59.958Z",
+  "updated": "2026-11-14T04:51:28.020Z",
   "manuals": [
     {
-      "title_th": "คู่มือ ตรวจเช็คตารางนัดหมาย",
-      "title_en": "Manual_Time slot - Check",
+      "title_th": "คู่มือ_การตรวจเช็คตารางนัดหมาย",
+      "title_en": "Manual_Time slot (Check)",
       "module": "",
       "roles": [
         "partner",
@@ -11,7 +11,7 @@
       ],
       "added": "2026-11-14",
       "kind": "html",
-      "src": "manuals/manual_time-slot---check-202611140444.html"
+      "src": "manuals/manual_time-slot-check-202611140451.html"
     }
   ]
 }
