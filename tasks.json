@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T07:19:43.939Z",
+  "updated": "2026-11-14T07:54:05.910Z",
   "tasks": [
     {
       "id": "t0_7Days",
@@ -8,9 +8,9 @@
       "from": 9,
       "to": 11,
       "focus": [],
+      "short": "7 Days",
       "title_th": "กรอกข้อมูล 7 Days ที่ RSM ส่งให้",
       "title_en": "",
-      "short": "7 Days",
       "note": "",
       "channel": "",
       "links": []
@@ -302,6 +302,20 @@
       "title_en": "",
       "note": "",
       "channel": "กลุ่ม Ding",
+      "links": []
+    },
+    {
+      "id": "tmwg40d3n",
+      "role": "ps",
+      "repeat": "monthly",
+      "from": 5,
+      "to": 5,
+      "focus": [],
+      "title_th": "ประชุมประจำเดือนกับทีมงาน",
+      "title_en": "PS meeting",
+      "short": "ประชุมรายเดือน",
+      "note": "",
+      "channel": "Partner",
       "links": []
     }
   ]
