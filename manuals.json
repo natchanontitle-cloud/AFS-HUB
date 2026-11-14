@@ -1,17 +1,29 @@
 {
-  "updated": "2026-11-14T04:59:51.093Z",
+  "updated": "2026-11-14T05:11:10.109Z",
   "manuals": [
     {
       "title_th": "คู่มือ_ตรวจเช็คการสร้างตารางนัดหมาย",
       "title_en": "Manual_Time Slot_Check",
       "module": "ตารางนัดหมาย",
+      "src": "manuals/manual_time-slot_check-202611140459.html",
+      "kind": "html",
+      "added": "2026-11-14",
+      "roles": [
+        "partner",
+        "rsm"
+      ]
+    },
+    {
+      "title_th": "รูปอ้างอิง",
+      "title_en": "Ref. Pic",
+      "module": "ตารางนัดหมาย (GCIP)",
       "roles": [
         "partner",
         "rsm"
       ],
       "added": "2026-11-14",
-      "kind": "html",
-      "src": "manuals/manual_time-slot_check-202611140459.html"
+      "kind": "image",
+      "src": "manuals/ref-pic-202611140511.png"
     }
   ]
 }
