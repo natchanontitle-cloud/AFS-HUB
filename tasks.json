@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T07:54:05.910Z",
+  "updated": "2026-11-14T08:03:31.939Z",
   "tasks": [
     {
       "id": "t0_7Days",
@@ -105,6 +105,22 @@
           "url": "https://natchanontitle-cloud.github.io/VOR-GWM/"
         }
       ]
+    },
+    {
+      "id": "tmwg4bpyw",
+      "role": "ps",
+      "repeat": "weekly",
+      "from": 1,
+      "to": 1,
+      "focus": [
+        5
+      ],
+      "title_th": "อัพเดท VOR GCIP",
+      "title_en": "Update VOR GCIP",
+      "short": "อัพเดท VOR ใน GCIP",
+      "note": "",
+      "channel": "",
+      "links": []
     },
     {
       "id": "t7_7Days",
@@ -311,9 +327,9 @@
       "from": 5,
       "to": 5,
       "focus": [],
+      "short": "ประชุมรายเดือน",
       "title_th": "ประชุมประจำเดือนกับทีมงาน",
       "title_en": "PS meeting",
-      "short": "ประชุมรายเดือน",
       "note": "",
       "channel": "Partner",
       "links": []
