@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-14T05:11:10.109Z",
+  "updated": "2026-11-14T15:32:20.161Z",
   "manuals": [
     {
       "title_th": "คู่มือ_ตรวจเช็คการสร้างตารางนัดหมาย",
@@ -17,13 +17,24 @@
       "title_th": "รูปอ้างอิง",
       "title_en": "Ref. Pic",
       "module": "ตารางนัดหมาย (GCIP)",
+      "src": "manuals/ref-pic-202611140511.png",
+      "kind": "image",
+      "added": "2026-11-14",
       "roles": [
         "partner",
         "rsm"
+      ]
+    },
+    {
+      "title_th": "Email SSOS Safety",
+      "title_en": "",
+      "module": "",
+      "roles": [
+        "rsm"
       ],
       "added": "2026-11-14",
-      "kind": "image",
-      "src": "manuals/ref-pic-202611140511.png"
+      "kind": "html",
+      "src": "manuals/gwm_ps_email_sender-2-202611141532.html"
     }
   ]
 }
