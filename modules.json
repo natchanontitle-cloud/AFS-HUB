@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-13T18:16:22.269Z",
+  "updated": "2026-11-15T04:40:30.035Z",
   "modules": [
     {
       "name_th": "VOR (GCIP/BI)",
@@ -7,6 +7,18 @@
       "desc_th": "Pending RO · รถค้างซ่อม / รออะไหล่",
       "desc_en": "Pending RO · vehicles off road",
       "url": "https://natchanontitle-cloud.github.io/VOR-GWM/",
+      "icon": "vor",
+      "roles": [
+        "partner",
+        "rsm"
+      ]
+    },
+    {
+      "name_th": "VOR live",
+      "name_en": "VOR live",
+      "desc_th": "สำหรับติดตามรถค้างซ่อมแบบ Real-time",
+      "desc_en": "Real-time tracking",
+      "url": "https://natchanontitle-cloud.github.io/VOR-live/",
       "icon": "vor",
       "roles": [
         "partner",
