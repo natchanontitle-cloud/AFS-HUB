@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-15T05:25:25.142Z",
+  "updated": "2026-11-21T10:33:06.709Z",
   "manuals": [
     {
       "title_th": "คู่มือ_ตรวจเช็คการสร้างตารางนัดหมาย",
@@ -52,13 +52,24 @@
       "title_th": "VOR live",
       "title_en": "",
       "module": "VOR live",
+      "src": "manuals/vor-live-202611150525.png",
+      "kind": "image",
+      "added": "2026-11-15",
       "roles": [
         "partner",
         "rsm"
+      ]
+    },
+    {
+      "title_th": "ส่งอีเมลง่ายๆ (SSOS)",
+      "title_en": "EMAIL",
+      "module": "",
+      "roles": [
+        "rsm"
       ],
-      "added": "2026-11-15",
-      "kind": "image",
-      "src": "manuals/vor-live-202611150525.png"
+      "added": "2026-11-21",
+      "kind": "html",
+      "src": "manuals/email-202611211033.html"
     }
   ]
 }
