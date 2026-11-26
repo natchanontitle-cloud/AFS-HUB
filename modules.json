@@ -1,6 +1,18 @@
 {
-  "updated": "2026-11-15T09:53:28.342Z",
+  "updated": "2026-11-26T02:04:24.681Z",
   "modules": [
+    {
+      "name_th": "GWM Overview Dashboard",
+      "name_en": "GWM Overview Dashboard",
+      "desc_th": "Dashboard, CSI, RO, Revenue, SSOS",
+      "desc_en": "Dashboard, CSI, RO, Revenue, SSOS",
+      "url": "https://chawinaimmanoj-ux.github.io/GWM-PS-Score-Card-V2/",
+      "icon": "chart",
+      "roles": [
+        "partner",
+        "rsm"
+      ]
+    },
     {
       "name_th": "VOR live",
       "name_en": "VOR live",
