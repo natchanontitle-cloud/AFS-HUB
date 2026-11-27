@@ -62,7 +62,8 @@ main{flex:1}
 
 /* module page */
 .phead{padding:6vh 0 22px;display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
-.back{display:inline-flex;align-items:center;gap:6px;border:0;background:none;color:var(--muted);cursor:pointer;padding:0;font-size:14px;margin-bottom:14px}
+.back{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;padding:10px 18px;border-radius:12px;font-size:15px;font-weight:500;margin-bottom:16px;box-shadow:var(--shadow)}
+.back:hover{border-color:var(--red);color:var(--red)}
 .back:hover{color:var(--red)}
 .phead h1{margin:0;font-size:clamp(32px,5vw,46px);font-weight:600;letter-spacing:-.3px}
 .phead h1 span{color:var(--red)}
@@ -350,7 +351,7 @@ details.gh ol{margin:10px 0 0;padding-left:20px;color:var(--muted);font-size:13p
 <div class="sheet" id="sheet"><div class="panel" id="panel"></div></div>
 <div class="toast" id="toast"></div>
 <div class="viewer" id="viewer">
-  <div class="vbar"><button class="ghost small" id="vClose">← <span data-t="back"></span></button><b id="vTitle"></b><a class="ghost small" id="vOpen" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span data-t="openTab"></span> ↗</a></div>
+  <div class="vbar"><button class="back" id="vClose" style="margin:0;padding:9px 16px">← <span data-t="back"></span></button><b id="vTitle"></b><a class="ghost small" id="vOpen" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><span data-t="openTab"></span> ↗</a></div>
   <div class="vbody" id="vBody"></div>
   <div class="vnote hide" id="vNote" data-t="pdfNote"></div>
 </div>
@@ -487,17 +488,26 @@ function render(){
   }).join("") || `<p style="color:var(--muted)">—</p>`;
 }
 let lastView = "home";
-function go(v){
+/* ---------- navigation: ปุ่ม Back ของเบราว์เซอร์/มือถือ ย้อนกลับภายในหน้า ไม่เด้งออก ---------- */
+let navDepth = 0;
+const VIEWS = ["home","partner","rsm","manuals","tasks"];
+const urlFor = v => v === "home" ? location.pathname + location.search : "#" + v;
+function pushNav(state, url){ try { history.pushState(state, "", url); navDepth++; } catch(e){} }
+function go(v, fromPop){
   if (v === "rsm" && store.get("afsRsm") !== "1"){ openLock(); return; }
   if ((v === "manuals" || v === "tasks") && view !== v && view !== "manuals" && view !== "tasks") lastView = view;
+  const changed = v !== view;
   view = v; render(); window.scrollTo(0, 0);
-  try { history.replaceState(null, "", v === "home" ? location.pathname + location.search : "#" + v); } catch(e){}
+  if (!fromPop && changed) pushNav({v}, urlFor(v));
 }
+function navBack(fallback){ if (navDepth > 0) history.back(); else go(fallback || "home"); }
+function openOverlay(name){ pushNav({v:view, ov:name}, location.href); }
+function closeOverlay(name, closer){ if (history.state && history.state.ov === name) history.back(); else closer(); }
 
 /* ---------- lock ---------- */
 async function sha(s){ const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, "0")).join(""); }
 window.sha = sha;
-function openLock(){ $("err").style.display = "none"; $("pw").value = ""; $("mask").classList.add("on"); setTimeout(() => $("pw").focus(), 60); }
+function openLock(){ $("err").style.display = "none"; $("pw").value = ""; $("mask").classList.add("on"); openOverlay("lock"); setTimeout(() => $("pw").focus(), 60); }
 function closeLock(){ $("mask").classList.remove("on"); }
 $("lockForm").onsubmit = async e => {
   e.preventDefault();
@@ -507,11 +517,13 @@ $("lockForm").onsubmit = async e => {
   for (const x of tries){ if (await sha(x) === RSM_HASH){ ok = true; break; } }
   if (!ok){ $("err").style.display = "block"; const f = $("lockForm"); f.classList.remove("shake"); void f.offsetWidth; f.classList.add("shake"); $("pw").select(); return; }
   store.set("afsRsm", "1", $("rem").checked);
-  closeLock(); go("rsm");
+  closeLock();
+  if (history.state && history.state.ov === "lock"){ try { history.replaceState({v:"rsm"}, "", urlFor("rsm")); } catch(e){} view = "rsm"; render(); window.scrollTo(0, 0); }
+  else go("rsm");
 };
 $("eye").onclick = () => { const p = $("pw"); p.type = p.type === "password" ? "text" : "password"; };
-$("cancel").onclick = closeLock;
-$("mask").onclick = e => { if (e.target.id === "mask") closeLock(); };
+$("cancel").onclick = () => closeOverlay("lock", closeLock);
+$("mask").onclick = e => { if (e.target.id === "mask") closeOverlay("lock", closeLock); };
 
 /* ---------- manuals (คู่มือ) ---------- */
 let MANUALS = [];
@@ -570,10 +582,10 @@ function openManual(m){
   if (m.kind === "image") b.innerHTML = `<div class="imgwrap"><img src="${esc(m.src)}" alt="${esc(mt(m))}"></div>`;
   else b.innerHTML = `<iframe src="${esc(m.src)}" title="${esc(mt(m))}"></iframe>`;
   $("vNote").classList.toggle("hide", m.kind !== "pdf");
-  $("viewer").classList.add("on"); document.body.style.overflow = "hidden";
+  $("viewer").classList.add("on"); document.body.style.overflow = "hidden"; openOverlay("viewer");
 }
 function closeViewer(){ $("viewer").classList.remove("on"); $("vBody").innerHTML = ""; document.body.style.overflow = ""; }
-$("vClose").onclick = closeViewer;
+$("vClose").onclick = () => closeOverlay("viewer", closeViewer);
 $("vBody").addEventListener("click", e => { if (e.target.tagName === "IMG") e.target.classList.toggle("zoom"); });
 $("manList").addEventListener("click", e => { const b = e.target.closest("[data-man]"); if (b) openManual(MANUALS[+b.dataset.man]); });
 $("manChips").addEventListener("click", e => { const b = e.target.closest("[data-mf]"); if (b){ manFilter = b.dataset.mf; renderManuals(); } });
@@ -584,7 +596,7 @@ $("grid").addEventListener("click", e => {
   if (list.length === 1) openManual(list[0]); else { manFilter = h.dataset.howto; go("manuals"); }
 });
 $("btnMan").onclick = () => { manFilter = "__all"; go("manuals"); };
-$("manBack").onclick = () => go(lastView || "home");
+$("manBack").onclick = () => navBack(lastView || "home");
 
 /* ---------- งานประจำเดือน (monthly tasks) ---------- (repeat: monthly | weekly [focus = weekdays] | ongoing)
    เก็บใน tasks.json — แก้ผ่าน ⚙️ จัดการเมนู → แท็บ "งานประจำเดือน"
@@ -758,7 +770,7 @@ $("tPrev").onclick = () => { taskMonth = new Date(taskMonth.getFullYear(), taskM
 $("tNext").onclick = () => { taskMonth = new Date(taskMonth.getFullYear(), taskMonth.getMonth() + 1, 1); renderTasks(); };
 $("tToday").onclick = () => { taskMonth = null; renderTasks(); };
 $("tIcs").onclick = downloadICS;
-$("tBack").onclick = () => go(lastView && lastView !== "tasks" ? lastView : "home");
+$("tBack").onclick = () => navBack(lastView && lastView !== "tasks" ? lastView : "home");
 $("btnTasks").onclick = () => { taskRole = view === "rsm" ? "rsm" : (view === "partner" ? "ps" : null); go("tasks"); };
 $("todayCard").addEventListener("click", e => { if (e.target.closest("#openTasks")){ taskRole = view === "rsm" ? "rsm" : "ps"; go("tasks"); } });
 
@@ -818,11 +830,12 @@ function openManager(tab){
   draft = MODULES.map(m => ({...m, roles:[...m.roles]}));
   mdraft = MANUALS.map(m => ({...m, roles:[...m.roles]}));
   tdraft = TASKS.map(x => ({...x, focus:[...x.focus], links:x.links.map(l => ({...l}))}));
-  pendingDel = []; dirty = false; mtab = tab || "menu"; drawList(); sheet.classList.add("on");
+  pendingDel = []; dirty = false; mtab = tab || "menu"; drawList(); sheet.classList.add("on"); openOverlay("sheet");
 }
 function closeManager(){
   if (dirty && !window.__confirmClose){ window.__confirmClose = true; toast("ยังไม่ได้บันทึก — กดปิดอีกครั้งเพื่อทิ้งการแก้ไข"); setTimeout(() => window.__confirmClose = false, 3000); return; }
-  window.__confirmClose = false; sheet.classList.remove("on");
+  window.__confirmClose = false; dirty = false;
+  closeOverlay("sheet", () => sheet.classList.remove("on"));
 }
 function ghBlock(){
   const gh = ghCfg();
@@ -1037,15 +1050,29 @@ $("tManage").onclick = () => openManager("task");
 /* ---------- events ---------- */
 document.querySelectorAll("[data-go]").forEach(b => b.onclick = () => go(b.dataset.go));
 $("home").onclick = () => go("home");
-$("back").onclick = () => go("home");
+$("back").onclick = () => navBack("home");
 $("logout").onclick = () => { store.del("afsRsm"); go("home"); };
 $("lang").onclick = e => { const b = e.target.closest("button"); if (!b) return; lang = b.dataset.l; store.set("afsLang", lang); applyLang(); };
 $("theme").onclick = () => { theme = theme === "dark" ? "light" : "dark"; store.set("afsTheme", theme); applyTheme(); };
-document.addEventListener("keydown", e => { if (e.key === "Escape"){ closeLock(); if ($("viewer").classList.contains("on")) closeViewer(); if (sheet.classList.contains("on")) closeManager(); } });
-window.addEventListener("hashchange", () => { const h = location.hash.slice(1) || "home"; if (h !== view) go(h); });
+document.addEventListener("keydown", e => { if (e.key === "Escape"){ if ($("viewer").classList.contains("on")) closeOverlay("viewer", closeViewer); else if ($("mask").classList.contains("on")) closeOverlay("lock", closeLock); else if (sheet.classList.contains("on")) closeManager(); } });
+window.addEventListener("popstate", e => {
+  if (navDepth > 0) navDepth--;
+  if ($("viewer").classList.contains("on")){ closeViewer(); return; }
+  if ($("mask").classList.contains("on")){ closeLock(); return; }
+  if (sheet.classList.contains("on")){
+    if (dirty){ openOverlay("sheet"); toast("ยังไม่ได้บันทึก — กด \"ปิด\" ในหน้าจัดการ ถ้าต้องการทิ้งการแก้ไข", 4000); return; }
+    sheet.classList.remove("on"); return;
+  }
+  let v = (e.state && e.state.v) || location.hash.slice(1) || "home";
+  if (!VIEWS.includes(v)) v = "home";
+  if (v === "rsm" && store.get("afsRsm") !== "1") v = "home";
+  go(v, true);
+});
 
 applyTheme(); applyLang();
-const h0 = location.hash.slice(1); if (["partner","rsm","manuals","tasks"].includes(h0)) go(h0);
+const h0 = location.hash.slice(1);
+try { history.replaceState({v:"home"}, "", urlFor("home")); } catch(e){}
+if (["partner","rsm","manuals","tasks"].includes(h0)) go(h0);
 loadModules().then(loadManuals).then(loadTasks);
 </script>
 
