@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-26T02:05:43.752Z",
+  "updated": "2026-11-27T04:11:30.198Z",
   "modules": [
     {
       "name_th": "GWM Overview Dashboard",
@@ -14,11 +14,11 @@
       ]
     },
     {
-      "name_th": "VOR live",
-      "name_en": "VOR live",
-      "desc_th": "สำหรับติดตามรถค้างซ่อมแบบ Real-time",
-      "desc_en": "Real-time tracking",
-      "url": "https://natchanontitle-cloud.github.io/VOR-live/",
+      "name_th": "VOR (GCIP/BI)",
+      "name_en": "VOR (GCIP/BI)",
+      "desc_th": "Pending RO · รถค้างซ่อม / รออะไหล่",
+      "desc_en": "Pending RO · vehicles off road",
+      "url": "https://natchanontitle-cloud.github.io/VOR-GWM/",
       "icon": "vor",
       "roles": [
         "partner",
@@ -26,11 +26,11 @@
       ]
     },
     {
-      "name_th": "VOR (GCIP/BI)",
-      "name_en": "VOR (GCIP/BI)",
-      "desc_th": "Pending RO · รถค้างซ่อม / รออะไหล่",
-      "desc_en": "Pending RO · vehicles off road",
-      "url": "https://natchanontitle-cloud.github.io/VOR-GWM/",
+      "name_th": "VOR live",
+      "name_en": "VOR live",
+      "desc_th": "สำหรับติดตามรถค้างซ่อมแบบ Real-time",
+      "desc_en": "Real-time tracking",
+      "url": "https://natchanontitle-cloud.github.io/VOR-live/",
       "icon": "vor",
       "roles": [
         "partner",
