@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-27T04:11:30.198Z",
+  "updated": "2026-11-28T07:04:11.936Z",
   "modules": [
     {
       "name_th": "GWM Overview Dashboard",
@@ -101,6 +101,17 @@
       "desc_en": "",
       "url": "",
       "icon": "bg",
+      "roles": [
+        "rsm"
+      ]
+    },
+    {
+      "name_th": "Visit Plan",
+      "name_en": "Visit Plan",
+      "desc_th": "",
+      "desc_en": "",
+      "url": "https://natchanontitle-cloud.github.io/GWM-visit-plan/",
+      "icon": "crm",
       "roles": [
         "rsm"
       ]
