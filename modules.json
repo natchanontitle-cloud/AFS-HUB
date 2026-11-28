@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-28T07:04:11.936Z",
+  "updated": "2026-11-28T07:13:00.578Z",
   "modules": [
     {
       "name_th": "GWM Overview Dashboard",
@@ -112,6 +112,17 @@
       "desc_en": "",
       "url": "https://natchanontitle-cloud.github.io/GWM-visit-plan/",
       "icon": "crm",
+      "roles": [
+        "rsm"
+      ]
+    },
+    {
+      "name_th": "Technical Confirmation",
+      "name_en": "Technical Confirmation",
+      "desc_th": "",
+      "desc_en": "",
+      "url": "https://natchanontitle-cloud.github.io/Tech-report/",
+      "icon": "bg",
       "roles": [
         "rsm"
       ]
